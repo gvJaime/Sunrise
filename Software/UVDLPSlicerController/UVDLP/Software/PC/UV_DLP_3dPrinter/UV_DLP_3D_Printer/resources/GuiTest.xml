@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuiConfig FileVersion="1">
+  <buttons>
+    <style forecolor="#ffdcdcdc" backcolor="RoyalBlue" gl="False" checkcolor="#ffdcdcdc" hovercolor="White" presscolor="White" nimages="1" pressscale="92" />
+    <style name="glbutt1" forecolor="Navy" backcolor="Transparent" gl="True" checkcolor="Navy" hovercolor="Navy" presscolor="White" nimages="1" hoverscale="106" />
+    <button name="home" dock="tr" x="10" y="100" w="48" h="48" style="glbutt1" image="glButtHome1" />
+    <button name="top" dock="tr" x="10" y="160" w="48" h="48" style="glbutt1" image="glTopView" />
+    <button name="undo" dock="tl" x="10" y="30" w="48" h="48" image="buttUndo" />
+    <button name="redo" dock="tl" x="60" y="30" w="48" h="48" image="buttRedo" />
+  </buttons>
+  <controls>
+    <style forecolor="#ffdcdcdc" backcolor="Navy" framecolor="RoyalBlue" gl="False" checkcolor="#ffdcdcdc" hovercolor="White" presscolor="White" nimages="1" bgndimage="cwpanel" pressscale="92" panelpad="2" />
+    <style name="TopBars" forecolor="#ffdcdcdc" backcolor="RoyalBlue" checkcolor="#ffdcdcdc" hovercolor="White" presscolor="White" nimages="1" pressscale="92" />
+    <style name="SideBars" forecolor="White" backcolor="RoyalBlue" applysubcontrols="False" />
+    <style name="Windows" applysubcontrols="True" applywincontrols="True" />
+    <style name="gltext1" forecolor="White" backcolor="Transparent" gl="True" />
+    <control name="pmove" x="20" y="90" />
+    <control name="pscale" x="20" y="90" />
+    <control name="protate" x="20" y="90" />
+    <control name="psupport" x="20" y="90" />
+    <control name="pviewopts" x="20" y="90" />
+    <control name="pconfig" x="20" y="90" />
+    <control name="pmeshtools" x="20" y="90" />
+    <control name="pscenetree" x="20" y="90" />
+    <control name="pobjectinf" x="20" y="90" />
+    <control name="pmachinecontrol" x="20" y="90" />
+    <control name="pmanualgcode" x="20" y="90" />
+    <control name="pprojectorcontrol" x="20" y="90" />
+    <control name="clayernum" x="0" y="80" />
+    <control name="progress" x="10" y="80" style="gltext1" />
+    <control name="mainmsg" x="100" y="8" w="400" style="gltext1" />
+    <control name="timemsg" x="100" y="34" w="400" style="gltext1" />
+    <control name="pnlTopIconsMain" style="TopBars" />
+    <control name="pnlTopTabs" style="SideBars" />
+    <control name="pnlRightBar" style="SideBars" />
+    <control name="pnlLeftBar" style="SideBars" />
+  </controls>
+  <decals>
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <bar dock="nc" tlcolor="AliceBlue" trcolor="AliceBlue" blcolor="LightBlue" brcolor="SkyBlue" level="background" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+    <image image="cwlogo_tr" dock="tr" x="0" y="0" />
+  </decals>
+  <layouts>
+    <layout name="MainLayout" w="1000" h="500">
+      <splitpanel name="SplitPanel1" dock="Fill" orientation="H">
+        <splitpanel1 name="SplitPanel11">
+          <tabpanel name="TabPanel1" style="Windows">
+            <tabitem name="TabItem1" text="3D View" control="ctlTitle3dView" image="buttViewModel" isselected="True">
+              <control name="ctl3DView1" />
+              <flowpanel name="3DViewLeftTools" dock="Left" direction="T2B" collapsible="True">
+                <control name="ctlSupports1" />
+              </flowpanel>
+              <flowpanel name="3DViewRightTools" dock="Right" direction="T2B" iscollapsed="False" collapsible="True">
+                <control name="ctlScene1" />
+                <control name="ctlObjectInfo1" />
+                <control name="ctlMoveExpand1" />
+                <control name="ctlMirror1" />
+                <control name="ctlScale1" />
+                <control name="ctlRotate1" />
+                <control name="ctlView1" />
+              </flowpanel>
+            </tabitem>
+            <tabitem name="TabItem2" text="Slice View" control="ctlTitleViewSlice" image="buttViewSlice">
+              <control name="pnlSliceView" />
+            </tabitem>
+            <tabitem name="TabItem3" text="Control" control="ctlTitleViewControls" image="buttMachineControl">
+              <control name="ctlMainManual" />
+            </tabitem>
+            <tabitem name="TabItem4" text="Configure" control="ctlTitleConf" image="buttMachineConfig">
+              <tabpanel name="TabPanel2">
+                <tabitem name="TabItem5" text="Configure Machine" control="ctlTitleMachineConfig" image="buttMachineConfig" isselected="True">
+                  <control name="guimachineconfigparent" />
+                </tabitem>
+                <tabitem name="TabItem6" text="Configure Slicing Profile" control="ctlTitleSliceProfile" image="buttViewSlice">
+                  <control name="pnlToolpathGenConfig" />
+                </tabitem>
+              </tabpanel>
+            </tabitem>
+          </tabpanel>
+        </splitpanel1>
+        <splitpanel2 name="SplitPanel21">
+          <control name="txtLog" dock="Fill" />
+        </splitpanel2>
+      </splitpanel>
+      <panel name="PanelTopIconMain" dock="Top" h="65">
+        <flowpanel name="MessagesPanel" dock="Right" direction="T2B" w="500" style="Windows">
+          <control name="mainmsg" />
+          <control name="timemsg" />
+        </flowpanel>
+        <flowpanel name="TopIconsFlow" dock="Left" direction="L2R" w="800" style="Windows">
+          <control name="openfile" />
+          <control name="connect" />
+          <control name="disconnect" />
+          <control name="slice" />
+          <control name="play" />
+          <control name="pause" />
+          <control name="stop" />
+        </flowpanel>
+      </panel>
+    </layout>
+  </layouts>
+  <sequences />
+  <userparams>
+    <MyText type="String">676</MyText>
+    <MyColor type="Color">ControlDark</MyColor>
+  </userparams>
+</GuiConfig>

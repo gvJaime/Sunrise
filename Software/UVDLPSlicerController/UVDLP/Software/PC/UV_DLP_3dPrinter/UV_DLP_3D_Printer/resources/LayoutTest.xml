@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GuiConfig FileVersion="1">
+  <layouts>
+    <layout name="MainLayout" w="1000" h="500">
+      <splitpanel dock="Fill" orientation="H">
+        <splitpanel1>
+          <tabpanel>
+            <tabitem name="ctlTitle3dView" isselected="true">
+              <control name="ctl3DView1" />
+              <flowpanel name="3DViewLeftTools" direction="T2B" dock="Left" collapsible="true">
+                <control name="ctlSupports1" />
+              </flowpanel>
+              <flowpanel name="3DViewRightTools" direction="T2B" dock="Right" collapsible="true" iscollapsed="false">
+                <control name="ctlScene1" />
+                <control name="ctlObjectInfo1" />
+                <control name="ctlMoveExpand1" />
+                <control name="ctlMirror1" />
+                <control name="ctlScale1" />
+                <control name="ctlRotate1" />
+                <control name="ctlView1" />
+              </flowpanel>
+            </tabitem>
+            <tabitem name="ctlTitleViewSlice">
+              <control name="pnlSliceView" />
+            </tabitem>
+            <tabitem name="ctlTitleViewControls">
+              <control name="ctlMainManual" />
+            </tabitem>
+            <tabitem name="ctlTitleConf" image="buttMachineConfig" text="Configure">
+              <tabpanel>
+                <tabitem name="ctlTitleMachineConfig" isselected="true">
+                  <control name="guimachineconfigparent" />
+                </tabitem>
+                <tabitem name="ctlTitleSliceProfile">
+                  <control name="pnlToolpathGenConfig" />
+                </tabitem>
+              </tabpanel>
+            </tabitem>
+          </tabpanel>
+        </splitpanel1>
+        <splitpanel2>
+          <control name="txtLog" dock="Fill" />
+        </splitpanel2>
+      </splitpanel>
+      <panel name="PanelTopIconMain" dock="Top" h="65">
+        <flowpanel name="MessagesPanel" direction="T2B" dock="Right" w="500">
+          <control name="mainmsg"/>
+          <control name="timemsg"/>
+        </flowpanel>
+        <flowpanel name="TopIconsFlow" direction="L2R" w="800" dock="Left">
+           <control name="openfile"/>
+           <control name="connect"/>
+           <control name="disconnect"/>
+           <control name="slice"/>
+           <control name="play"/>
+           <control name="pause"/>
+           <control name="stop"/>
+        </flowpanel>
+      </panel>
+    </layout>
+  </layouts>
+  <controls>		
+    <style bgndimage="cwpanel" panelpad="2" backcolor="Navy" framecolor="RoyalBlue" hovercolor="White" forecolor="#DCDCDC" checkcolor="#DCDCDC" presscolor="White" nimages="1" pressscale="92" gl="false"/>
+  </controls>
+</GuiConfig>

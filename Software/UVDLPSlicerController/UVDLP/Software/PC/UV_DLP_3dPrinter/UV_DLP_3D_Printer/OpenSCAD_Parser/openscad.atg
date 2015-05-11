@@ -1,0 +1,338 @@
+/* ANSI C 89 grammar as specified in http://flash-gordon.me.uk/ansi.c.txt
+
+	Processing the C grammar requires LL(1) conflict resolvers, some of which
+	need to check whether an identifier is a type name (see IsTypeName() below).
+	So the grammar assumes that there is a symbol table, from where you can
+	look up an identifier and find out whether it is a type name.
+	
+	The language in the semantic actions here is C#, but it can easily be
+	translated to any other language.
+*/
+
+using System.Collections;
+
+COMPILER OpenSCAD
+
+public SymTab tab; // symbol table
+
+//------------------ token sets ------------------------------------
+
+static BitArray
+	startOfTypeName = NewBitArray(_const, _volatile, _void, _char, _short, _int, _long,
+		                _double, _signed, _unsigned, _struct, _union, _enum),
+	startOfDecl     = NewBitArray(_typedef, _extern, _static, _auto, _register, _const, 
+	                  _volatile, _void, _char, _short, _int, _long, _double, _signed, 
+	                  _unsigned, _struct, _union, _enum);
+
+private static BitArray NewBitArray(params int[] val) {
+	BitArray s = new BitArray(128);
+	foreach (int x in val) s[x] = true;
+	return s;
+}
+
+//---------- LL(1) conflict resolvers ------------------------------
+
+private bool IsTypeName(Token x) {
+	if (x.kind != _ident) return false;
+	Obj obj = tab.Find(x.val);
+	return obj.kind == Obj.TYPE;
+}
+
+bool IsType0() { // return true if the next token is a type name
+	return IsTypeName(la);
+} 
+
+bool IsType1() { // return true if "(" TypeName
+	if (la.kind != _lpar) return false;
+	Token x = scanner.Peek();
+	if (startOfTypeName[x.kind]) return true;
+	return IsTypeName(x);
+}
+
+bool Continued() { // return true if not "," "}"
+	if (la.kind == _comma) {
+		Token x = scanner.Peek();
+		if (x.kind == _rbrace) return false;
+	}
+	return true; 
+}
+
+bool Continued1() { // return true if ",", which is not followed by "..."
+	if (la.kind == _comma) {
+		Token x = scanner.Peek();
+		if (x.kind != _ellipsis) return true;
+	}
+	return false; 
+}
+
+bool IsLabel() { // return true if ident ":" | "case" | "default"
+	if (la.kind == _ident) {
+		Token x = scanner.Peek();
+		if (x.kind == _colon) return true;
+	} else if (la.kind == _case || la.kind == _default) {
+		return true;
+	}
+	return false; 
+}
+
+bool IsDecl() { // return true if followed by Decl
+	if (startOfDecl[la.kind]) return true;
+	return IsTypeName(la);
+}
+
+bool IsAbstractDecl() { // return true if there is no non-type-ident after '*', '(', "const", "volatile"
+	Token x = la;
+	while (x.kind == _star || x.kind == _lpar || x.kind == _const || x.kind == _volatile) x = scanner.Peek();
+	if (x.kind != _ident) return true;
+	return IsTypeName(x);
+}
+
+bool IsDeclarator() { // return true if '*', '(', '[', ';', noTypeIdent
+	if (la.kind == _star || la.kind == _lpar || la.kind == _lbrack || la.kind == _semicolon || la.kind == 0) return true;
+	if (la.kind != _ident) return false;
+	return !IsTypeName(la);
+}
+
+
+CHARACTERS
+	letter     = 'A'..'Z' + 'a'..'z' + '_'.
+	oct        = '0'..'7'.
+	digit      = '0'..'9'.
+	nzdigit    = '1'..'9'.
+	hex        = digit + 'a'..'f' + 'A'..'F'.
+	notQuote   = ANY - '"' - "\r\n".
+	notApo     = ANY - '\'' - "\r\n".
+	
+	tab        = '\t'.
+	cr         = '\r'.
+	lf         = '\n'.
+	newLine    = cr + lf.
+	notNewLine = ANY - newLine .
+	ws         = " " + tab + '\u000b' + '\u000c'.
+	
+	
+TOKENS
+	ident    = letter {letter | digit}.
+	
+	floatcon = ( '.' digit {digit} [('e'|'E')  ['+'|'-'] digit {digit}]
+						 | digit {digit} '.' {digit} [('e'|'E')  ['+'|'-'] digit {digit}]
+						 | digit {digit} ('e'|'E')  ['+'|'-'] digit {digit}
+						 )
+						 ['f'|'l'|'F'|'L'].
+
+	intcon   = ( nzdigit {digit}
+						 | '0' {oct}
+						 | ("0x"|"0X") hex {hex}
+						 )
+						 {'u'|'U'|'l'|'L'}.
+	
+	string   = '"' {notQuote} '"'.        // no check for valid escape sequences
+	
+	charcon  = '\'' notApo {notApo} '\''. // no check for valid escape sequences
+
+	// tokens defined in order to get their names for LL(1) conflict resolvers
+	auto      = "auto".
+	case      = "case".
+	char      = "char".
+	const     = "const".
+	default   = "default".
+	double    = "double".
+	enum      = "enum".
+	extern    = "extern".
+	float     = "float".
+	int       = "int".
+	long      = "long".
+	register  = "register".
+	short     = "short".
+	signed    = "signed".
+	static    = "static".
+	struct    = "struct".
+	typedef   = "typedef".
+	union     = "union".
+	unsigned  = "unsigned".
+	void      = "void".
+	volatile  = "volatile".
+	comma     = ','.
+	semicolon = ';'.
+	colon     = ':'.
+	star      = '*'.
+	lpar      = '('.
+	rpar      = ')'.
+	lbrack    = '['.
+	rbrace    = '}'.
+	ellipsis  = "...".
+
+
+PRAGMAS
+	//---- preprocessor commands (not handled here)
+	ppDefine  = '#' {ws} "define" {notNewLine} newLine.
+	ppUndef   = '#' {ws} "undef" {notNewLine} newLine.
+	ppIf      = '#' {ws} "if" {notNewLine} newLine.
+	ppElif    = '#' {ws} "elif" {notNewLine} newLine.
+	ppElse    = '#' {ws} "else" {notNewLine} newLine.
+	ppEndif   = '#' {ws} "endif" {notNewLine} newLine.
+	ppInclude = '#' {ws} "include" {notNewLine} newLine.
+
+COMMENTS FROM "/*" TO "*/"
+COMMENTS FROM "//" TO lf
+
+IGNORE tab + cr + lf
+
+PRODUCTIONS
+
+//---------- Compilation Unit ----------
+
+C = 
+	ExternalDecl {ExternalDecl}.
+	
+ExternalDecl = 
+  DeclSpecifierList 
+  ( Declarator 
+    ( {Decl} '{' {IF(IsDecl()) Decl | Stat} '}'   // FunctionDef
+    | ['=' Initializer] {',' InitDeclarator}  ';' // Decl
+    )
+  | ';'                                           // Decl
+  ).
+
+
+//---------- Declarations ----------
+
+Decl = DeclSpecifierList [InitDeclarator {',' InitDeclarator}] ';'.
+
+InitDeclarator = Declarator ['=' Initializer].
+
+DeclSpecifierList = DeclSpecifier {IF(!IsDeclarator()) DeclSpecifier}.
+
+DeclSpecifier =
+		"typedef" | "extern" | "static" | "auto" | "register" // storage class specifier
+	| "const" | "volatile"                                  // TypeQualifier
+	| TypeSpecifier.
+
+TypeSpecifier =
+		"void" | "char" | "short" | "int" | "long" | "float" | "double" | "signed" | "unsigned"
+	| ident // type name
+  | ("struct" | "union")
+    ( ident ['{' StructDecl {StructDecl} '}']
+    | '{' StructDecl {StructDecl} '}'
+    )
+  | "enum"
+    ( ident ['{' Enumerator {',' Enumerator} '}']
+    | '{' Enumerator {',' Enumerator} '}'
+    ).
+
+StructDecl = SpecifierQualifierList StructDeclarator {',' StructDeclarator} ';'.
+
+StructDeclarator = Declarator [':' ConstExpr] | ':'  ConstExpr.
+
+Enumerator = ident ['=' ConstExpr].
+
+SpecifierQualifierList =
+  (TypeSpecifier | TypeQualifier)
+  { IF(!IsDeclarator())
+    (TypeSpecifier | TypeQualifier)
+  }.
+
+TypeQualifier = "const" | "volatile".
+
+Declarator =
+	[Pointer]
+	( ident
+	| '(' Declarator ')'
+	)
+	{ '[' [ConstExpr] ']' 
+	| '(' [IF(!IsType0()) IdentList | ParamTypeList] ')' 
+	}.
+
+Pointer = '*'  {TypeQualifier} {'*'  {TypeQualifier}}.
+
+ParamTypeList = ParamDecl {IF(Continued1()) ',' ParamDecl} [',' "..."].
+
+ParamDecl = DeclSpecifierList [IF(IsAbstractDecl()) AbstractDeclarator | Declarator].
+
+IdentList = ident {',' ident}.
+
+TypeName = // a better name would be Type
+	SpecifierQualifierList [AbstractDeclarator].
+
+AbstractDeclarator =
+	Pointer [DirectAbstractDeclarator]
+| DirectAbstractDeclarator.
+
+DirectAbstractDeclarator =
+	( '(' [AbstractDeclarator | ParamTypeList] ')'
+	| '[' [ConstExpr] ']'
+	)
+	{ '[' [ConstExpr] ']' 
+	| '(' [ParamTypeList] ')'
+	}.
+
+Initializer = 
+    AssignExpr 
+  | '{'  Initializer {IF(Continued()) ',' Initializer} [','] '}'.
+
+
+//---------- Expressions ----------
+
+Expr       = AssignExpr {','  AssignExpr}.
+AssignExpr = CondExpr [AssignOp AssignExpr]. // relaxed
+CondExpr   = LogOrExpr ['?' Expr ':' CondExpr].
+LogOrExpr  = LogAndExpr {"||" LogAndExpr}.
+LogAndExpr = OrExpr {"&&" OrExpr}.
+OrExpr     = XorExpr {'|' XorExpr}.
+XorExpr    = AndExpr {'^' AndExpr}.
+AndExpr    = EqlExpr {'&' EqlExpr}.
+EqlExpr    = RelExpr {("==" | "!=") RelExpr}.
+RelExpr    = ShiftExpr {('<' | '>' | "<=" | ">=") ShiftExpr}.
+ShiftExpr  = AddExpr {("<<" | ">>") AddExpr}.
+AddExpr    = MultExpr {('+' | '-') MultExpr}.
+MultExpr   = CastExpr {('*' | '/' | '%') CastExpr}.
+CastExpr   = IF(IsType1()) '(' TypeName ')' CastExpr
+           | UnaryExpr.
+
+UnaryExpr =
+  {"++" | "--"}
+  ( PostfixExpr
+  | UnaryOp CastExpr
+  | "sizeof"  (IF(IsType1()) '(' TypeName ')' | UnaryExpr)
+  ).
+
+PostfixExpr =
+  Primary
+  { '[' Expr ']' 
+  | '.'  ident
+  | "->" ident
+  | '(' [ArgExprList] ')' 
+  | "++" 
+  | "--"
+  }.
+
+Primary = ident | intcon | floatcon | charcon | string | '(' Expr ')'.
+
+ConstExpr = CondExpr.
+
+ArgExprList = AssignExpr {','  AssignExpr}.
+
+UnaryOp = '&' | '*' | '+' | '-' | '~' | '!'.
+
+AssignOp = '=' | "*=" | "/=" | "%=" | "+=" | "-=" | "<<=" | ">>=" | "&=" | "^=" | "|=".
+
+
+//---------- Statements ----------
+
+Stat =
+	  IF(IsLabel()) (ident | "case" ConstExpr | "default") ':' Stat
+	| Expr ';'
+	| '{' {IF(IsDecl()) Decl | Stat} '}'
+	| "if" '(' Expr ')' Stat ["else" Stat]
+	| "switch" '(' Expr ')' Stat
+	| "while" '(' Expr ')' Stat
+	| "do" Stat "while" '(' Expr ')' ';'
+	| "for" '(' (IF(IsDecl()) Decl | [Expr] ';') [Expr] ';' [Expr] ')' Stat
+	| "goto" ident ';'
+	| "continue" ';'
+	| "break" ';'
+	| "return" [Expr] ';'
+	| ';'
+	.
+
+END OpenSCAD.

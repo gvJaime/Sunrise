@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SliceBuildConfig FileVersion="2">
+  <DotsPermmX>102.4</DotsPermmX>
+  <DotsPermmY>76.8</DotsPermmY>
+  <XResolution>1024</XResolution>
+  <YResolution>768</YResolution>
+  <BlankTime>1650</BlankTime>
+  <PlatformTemp>75</PlatformTemp>
+  <ExportSVG>2</ExportSVG>
+  <Export>True</Export>
+  <ExportPNG>False</ExportPNG>
+  <XOffset>0</XOffset>
+  <YOffset>0</YOffset>
+  <Direction>Bottom_Up</Direction>
+  <LiftDistance>2.2</LiftDistance>
+  <SlideTiltValue>0</SlideTiltValue>
+  <AntiAliasing>False</AntiAliasing>
+  <UseMainLiftGCode>False</UseMainLiftGCode>
+  <AntiAliasingValue>3.5</AntiAliasingValue>
+  <LiftFeedRate>100</LiftFeedRate>
+  <LiftRetractRate>400</LiftRetractRate>
+  <ExportOption>ZIP</ExportOption>
+  <FlipX>False</FlipX>
+  <FlipY>False</FlipY>
+  <Notes>
+  </Notes>
+  <GCodeHeader>;********** Header Start ********
+;Here you can set any G or M-Code which should be executed BEFORE the build process
+G21 ;Set units to be mm
+G91 ;Relative Positioning
+M17 ;Enable motors
+;********** Header End **********
+</GCodeHeader>
+  <GCodeFooter>;********** Footer Start ********
+;Here you can set any G or M-Code which should be executed after the last Layer is Printed
+M18 ;Disable Motors
+;&lt;Completed&gt;
+;********** Footer End ********
+</GCodeFooter>
+  <GCodePreslice>;********** Pre-Slice Start ********
+;Set up any GCode here to be executed before a lift
+;********** Pre-Slice End **********
+</GCodePreslice>
+  <GCodeLift>;********** Lift Sequence ********
+G1{$SlideTiltVal != 0? X$SlideTiltVal:} Z($ZLiftDist * $ZDir) F$ZLiftRate
+G1{$SlideTiltVal != 0? X($SlideTiltVal * -1):} Z(($LayerThickness-$ZLiftDist) * $ZDir) F$ZRetractRate
+;&lt;Delay&gt; %d$BlankTime
+;********** Lift Sequence **********
+</GCodeLift>
+  <SelectedInk>Default</SelectedInk>
+  <InkConfig>
+    <Name>Default</Name>
+    <SliceHeight>0.0500000007450581</SliceHeight>
+    <LayerTime>3100</LayerTime>
+    <FirstLayerTime>7000</FirstLayerTime>
+    <NumberofBottomLayers>3</NumberofBottomLayers>
+    <ResinPriceL>0</ResinPriceL>
+  </InkConfig>
+  <InkConfig>
+    <Name>Maker SubG Blue</Name>
+    <SliceHeight>0.0500000007450581</SliceHeight>
+    <LayerTime>950</LayerTime>
+    <FirstLayerTime>3000</FirstLayerTime>
+    <NumberofBottomLayers>3</NumberofBottomLayers>
+    <ResinPriceL>0</ResinPriceL>
+  </InkConfig>
+  <MinTestExposure>500</MinTestExposure>
+  <TestExposureStep>200</TestExposureStep>
+</SliceBuildConfig>

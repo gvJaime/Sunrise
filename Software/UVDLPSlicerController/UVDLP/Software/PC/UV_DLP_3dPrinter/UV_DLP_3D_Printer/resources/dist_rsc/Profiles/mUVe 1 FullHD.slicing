@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SliceBuildConfig FileVersion="2">
+  <DotsPermmX>102.4</DotsPermmX>
+  <DotsPermmY>76.8</DotsPermmY>
+  <XResolution>1024</XResolution>
+  <YResolution>768</YResolution>
+  <BlankTime>110000</BlankTime>
+  <PlatformTemp>75</PlatformTemp>
+  <ExportSVG>0</ExportSVG>
+  <Export>True</Export>
+  <ExportPNG>True</ExportPNG>
+  <XOffset>0</XOffset>
+  <YOffset>0</YOffset>
+  <Direction>Bottom_Up</Direction>
+  <LiftDistance>3</LiftDistance>
+  <SlideTiltValue>0</SlideTiltValue>
+  <AntiAliasing>True</AntiAliasing>
+  <UseMainLiftGCode>False</UseMainLiftGCode>
+  <AntiAliasingValue>1.5</AntiAliasingValue>
+  <LiftFeedRate>0.25</LiftFeedRate>
+  <LiftRetractRate>0</LiftRetractRate>
+  <ExportOption>ZIP</ExportOption>
+  <FlipX>True</FlipX>
+  <FlipY>False</FlipY>
+  <Notes>
+  </Notes>
+  <GCodeHeader>;********** Header Start ********
+;Here you can set any G or M-Code which should be executed BEFORE the build process
+G21 ;Set units to be mm
+G91 ;Relative Positioning
+G28 ; Home Printer
+M650 D$ZLiftDist S$ZLiftRate P0;mUVe 1 Prefs
+M17 ;Enable motors
+M280 P2 S160 ;Open Shutter
+;********** Header End **********</GCodeHeader>
+  <GCodeFooter>;********** Footer Start ********
+;Here you can set any G or M-Code which should be executed after the last Layer is Printed
+M651; Do mUVe 1 Peel Move
+G1 Z10: Lift 10mm
+G92 ;Set back to absolute
+M280 P2 S10 ;Close Shutter
+;&lt;Completed&gt;
+;********** Footer End ********
+</GCodeFooter>
+  <GCodePreslice>;********** Pre-Slice Start ********
+;Set up any GCode here to be executed before a lift
+;********** Pre-Slice End **********
+</GCodePreslice>
+  <GCodeLift>;********** Lift Sequence ********
+G04 P500; Pause
+M280 P2 S10 ;Close Shutter
+{$CURSLICE &lt; 30?M650 D($ZLiftDist*3) S($ZLiftRate) P0;mUVe 1 Prefs:M650 D($ZLiftDist*2) S($ZLiftRate*4) P0;mUVe 1Prefs}
+M651; Do mUVe 1 Peel Move
+G1 Z(($LayerThickness) * $ZDir)
+M280 P2 S160 ;Open Shutter
+G04 P4000; Pause
+;********** Lift Sequence **********
+
+</GCodeLift>
+  <SelectedInk>MakerJuice SubG+ Red</SelectedInk>
+  <InkConfig>
+    <Name>Default</Name>
+    <SliceHeight>0.100000001490116</SliceHeight>
+    <LayerTime>8200</LayerTime>
+    <FirstLayerTime>30000</FirstLayerTime>
+    <NumberofBottomLayers>2</NumberofBottomLayers>
+    <ResinPriceL>45</ResinPriceL>
+  </InkConfig>
+  <InkConfig>
+    <Name>MakerJuice SubG+ Red</Name>
+    <SliceHeight>0.100000001490116</SliceHeight>
+    <LayerTime>12000</LayerTime>
+    <FirstLayerTime>55000</FirstLayerTime>
+    <NumberofBottomLayers>2</NumberofBottomLayers>
+    <ResinPriceL>45</ResinPriceL>
+  </InkConfig>
+  <MinTestExposure>500</MinTestExposure>
+  <TestExposureStep>200</TestExposureStep>
+</SliceBuildConfig>

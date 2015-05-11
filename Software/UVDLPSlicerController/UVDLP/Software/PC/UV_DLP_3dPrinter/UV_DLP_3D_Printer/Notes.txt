@@ -1,0 +1,309 @@
+﻿
+ToDo:
+
+Web presense / 
+	release FDM plugin
+	release SLS limited
+
+Integrate VCG library
+http://vcg.isti.cnr.it/~cignoni/newvcglib/html/
+builds for 32bit x86 on Linux and Windows
+
+
+
+2.  Is it possible to select a model and have the software show you the unsupported areas that are hanging down. (Ron B.)
+-Find and show lowest point/area in region of model
+-manual & automatic intra-object supports
+	-match angle of supports better to the surface of the polygon normal
+
+Automatic layout and support generation of scene?
+
+-need faster support generation
+	position camera at bottom facing up
+	render scene into bitmap,
+	render into zbuffer
+	test each pixel of zbuffer to associate what polygon it came from
+
+Scene/Object info areas should be merged
+
+Pro Version:
+home hobbiest licensce 
+	flat fee - 75$
+
+vendor licience 
+	per-site cost(unlimited) or per-machine license
+	2500$ per year Site license fee
+	Pro-fee? Plugin Creation Fee
+	
+Pro Features:
+-Background/theming color control
+	per control/button color control
+-overlays
+-controls on the 3d screen
+-add/remove buttons from toolbar
+-bind sequences/scripts to buttons
+-rearrange/remove controls
+-add controls/resources from plugins
+-run code from plugins
+	sequences
+	actual code
+	scripts
+Load multiple GUI Scripts into CW
+	- the 'pro' GUIconfig script loads up the controls for editing other guiconfigs and creating new guiconfigs
+
+-load/unload plugins (code/resources/guis,data,etc...)
+-execute sequences of script that can control machines such as gcode or binary interfaces (Generic ascii with binary passthrough)
+GUI Editor
+	gui editor is in the pro/vendor version
+	editor for gcode sequences
+	editor for controls/buttons/decals
+scripts have:
+	if/then/else
+	for/next
+	while loops
+	read variables from hardware into $VARNAME
+	send commands to hardware
+	set arbitrary $VARNAME varaibles to expressions / numbers
+scripts can:
+	load/save variables and sequences into XML
+	execute other scripts
+	map onto program events such as:
+		connected
+		disconnected
+		printstarted
+		printstopped
+		paused
+		cancelled
+Common machine sequences:
+	Startup
+	Shutdown
+	Goto home position
+	Build/Print position 
+Sequences can be defined in the following files:
+	Machine profile config files	
+		Some sequence examples:
+			Machine Connect
+			Machine Disconnect
+			Special Homing sequnces?
+			Set/Recall build home / marker position?
+				
+	Slicing profile config files
+		Some sequences can be:
+			Special move / slice sequences
+	GUI Config files
+
+	The machine config will have additional controls with the pro version to add /edit seqeunces
+	There should be a sequence editor control that can either pop up or be embedded as a control in another composite control
+	Sequences should maintain namespaces
+
+
+
+
+General GUI editor
+Ability to define sequences, 
+	sequences can:
+		send /receive data in sequence
+		receive data from devices
+		use a general-notation script to:
+			define variables (doubles)
+			perform arithmetic
+			perform and/or/xor...
+
+-Change CW to have the ability to load a list of GUIConfigs on startup.
+-Tie this into the plugin config screen
+- The GUIConfig files can have code that runs on startup/load
+
+-start off the GUI mods with a menu editor
+- Sequence editor:
+- have the ability to define GCode sequences
+		- save sequences in GUIConfig files
+
+- Add the ability to save/load GCode snippets (strings) from XML docs - slicing profile / machine profile
+- Add ability for GUIConfig.txt to be loaded from file
+- Add the ability for a button in the GUI defined by the GUIConfig.txt file to call a GCode / Build script seqeunce
+- Add the ability for a run-time loaded XML script of a build process to use state machine and similar to generate gcode during a build
+to interactively build for a scene . This should have the ability to run G/M code commands and read the results into variable that can be used in
+the gcode scripts. This can be built into complex structures in the future. This script can be save as a string varaible in an XML file.
+This script has a name, and can be called to execute by script.
+
+- Add a height selection for Support bases - just the footer portion
+- Make a generic plugin
+	XML GUIConfig can set splash, name, basic settings, hash for vendor id
+	load the guiconfig.txt file
+	load the splash
+	use the guiconfig xml configuration to configure various settings.
+- When I open the control tab, even though I have the manual control button checked, I cannot seem to get it to show up? <- projecter/gcode tab mixup?
+- show which layer # is being exposed 
+- print up to a certain layer or %
+- start print on a specific layer
+- pulsing exposure per layer with user defined pulsing duration and number of pulses per layer
+- Re-Write the manual with new screen shots
+- Preset GCode commands (Manual Control Window). Or at least an individually selectable list of previous commands to reuse without the need for copy-pasting.
+- OnEnter event for the custom GCode txt field, so there is no need to send it using the mouse.
+- AutoScroll for the GCode replies
+
+- fix php script to first look for matching machine GUID to update record, if no existing record, add new
+
+- allow importing a set of images (png,bmp) along with a layer height. Generate a GCode file and allow printing from imported.
+- Model preview section / additional tab
+- Add class to launch/ wait for an external process 
+- add additonal anti-aliasing re-sampling options other than bi-cubic.
+
+XML system to add/remove controls in the following areas:
+	Top panel
+	Top Lower
+	Left on 3d view
+	Right on 3d view
+	in 3d view
+	in any of the major panels
+
+1)      Memory problem for support generation:  We import several high resolution models and add supports.   When the number of supports is high,  the imported models will disappear and only the generated supports will remain on the 3D view
+2)      Maneuvering the 3D view is slow when the model has higher resolution,  I believe this is caused by the memory problem too
+3)      It would be great if you can add side, front, back, top and bottom views to help position the supports accurately
+4)      We have tried to create supports in other software and import the stl to creation workshop for slicing.   The overlap regions between the supports and the model do not have a union effect.    Unless we merge all supports with the model into one shell,   the sliced 2D images cannot be used.
+5)      Adaptive support generation does not help most of the time,  because removing redundant supports is a pain.   
+6)      It would be helpful if a simple 2D editor can be included in the slice view
+7)      Is it possible to do for loop or while loop in the G-code?    It is painful to modify parameters layer by layer for more optimized printing. 
+
+better hierchachal xml panels - 
+The panels/controls can be defined by coding a new control, or defining xml guidef docs
+-part library and view is a nice touch - very handy!
+
+ This autosupport generation can do intra-object supports, as well as a tree-structure
+ I need to determine inside/outside
+	
+	
+-in the slicing configuration screen,
+	group icons on the bottom panel so that the on/off visibilty switches of the panels			
+
+support generation
+	2d/3d
+Skirt/Brim/Raft functionality
+
+Better Exports/Imports of Slicing Data through one or more of the following:
+
+SVG import/export
+SLI Slice Layer Interface export
+CLI Common Layer Interface export <- http://www.forwiss.uni-passau.de/~welisch/papers/cli_format.html
+USF Universal Slice File
+SLC File
+SSL Statasys Layer File
+GCode reference help section loaded from file
+
+Firmware upload via AVRDude
+
+support for powder based printers
+
+If you have the projector at the right side of your monitor and click on a model in the 3D-View the name is to long to display and is shown in the projector and so light some resin
+
+Improvement Requests:***************************
+
+FEATURE-REQUESTS may be:
+1.
+A function to IMPORT Pictures and a coresponding  G-Codegenerator that creates the GCode for the number of Pictures Imported.
+This would give people the possibility to use Other slicers like "VISCam RP" an others!!!!!!!!!
+
+
+
+Completed**********************************
+
+03/2015 Supports:
+	Generate for entire scene
+	Generate for selected model(s)
+
+02/01/2015 -Fix Pause / Resume feature
+- Flip the direction of the Debug window text from bottom-up to top-down
+- CW fails to cleanly close - memory/resource issues
+09/14 - serial port auto-detect
+09/14 SVG export 
+09/14 better slicer
+09/14 In the gcode, add a passthrough command (eGeneric driver level) to allow any character/byte sequence to be passed through to the serial port
+	maybe an escape sequence?
+
+08/08/2014 - SMH - Pause will now stop on a blank screen 
+
+ - Template that lets you print 10 versions of the same model where each one has a slightly different exposure time all in the same print job? 
+	that way it would be pretty easy to find the right parameters, especially if you have a new material to test.
+- crash when pressing delete with no model
+- Plugins:
+	If there is a plugin, check for license,
+		if no license for a plugin is found, prompt for license for plugin
+			only if the plugin REQUIRES a license
+		plugins (if marked) can be tested for 30 days
+
+* Ability to enable/disable licensed plug-ins
+	*keep a file list of plug-ins that have been licensed, save an enabled/disabled status, use that when loading plugins
+
+
+* Have CW connect via HTTPPost to server at www.buildyourownsla.com and hit a php script
+   Have server address be configurable
+	Things the plugin should report:
+		list of Plugin ID's
+		List of plugin keys
+		version of CW
+
+ * On server: have the posts go to a php script 
+	post to a sql database table
+	use this for statistics
+	post time/data, ip address
+
+
+
+* When the Scene node in the scene control is selected, show the volume of all objects in the scene
+* Modify slicing to allow a single model to self-intersect
+* add a base (flat cube / cylinder) option in support generation
+* Fix the 'preview slice on Monitor' option
+* Fix the Object info control
+* In the machine configuration screen, allow the user to specify the visible machine controls
+* Make platform walls light up when objects are not fully enclosed in platform
+* Allow projector controls in the GCode sections (<PrjCmd , MonitorID , 'cmdname' >) - this will allow users to turn on/off projector during prints or make adjustments.
+* In 3d view, make the left and right side parent control panels vertically scroll, (may need to override the flowpanel)
+* Allow selected model to be displayed either with a bounding box, or with a selected color,
+    this would imply that there is a non-selected color (probably grey).
+
+*Embed the GCode sections in the machine configuration, this way, we can completely manage it and still have the user be able to edit
+it in a controlled way, we can even have a gcode helper functionality in the gui to help users configure thier machines (Eventually).
+
+*Can't select other build/slice profile - Fixed
+*Remove the comments being sent to the Firmware
+*Add homing for x/y/z in machine control section
+*Support Multiple Machine types:
+	Add in support for launching an external slicer (Slic3r)
+	Support multiple machine configuration types (import/export skeinforge types?)
+	add extruder controls (extrude,reverse,rate)
+	add temp controls (hot bed, extruder(s))
+
+*Implement projector controls 
+
+*Add Better messages for user events
+	Build started, stopped, layer, completed, etc...
+*Add optional homing commands for axises
+	this would help with shutter controls, as well as initial machine start
+
+*Add better controls on control panel
+*Fixed ASCII STL Loading
+*Added 3d view frustrum clipping
+*Add 3ds file support
+*Add 3d polygon backplane clipping via normal and dp to view vector
+
+*multiple config support
+	slice profiles
+*Image Anti-Aliasing
+	render image at 150% value and rescale to 100%
+*Update Documentation
+* Fix localization
+* Add preslice.gcode 
+* Add screen for GCode (preslice.gcode, prelift,postlist,start,end)
+* Lift fixes
+	go up lift dist
+	go back down (lift - layer height)
+* Add lift sequence prior to first layer
+* Add Coordinated Tilt / Slide support
+* Add Machine and profile names to:
+	slice display
+	main display
+* Add a control to show current slice # of total slice numbers
+*Add dxf file support
+*Add obj file support
+
+
