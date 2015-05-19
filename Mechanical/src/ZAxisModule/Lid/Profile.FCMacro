@@ -2,7 +2,8 @@ import FreeCAD
 
 PerfilNum=20
 AnchoNum=1
-LongitudNum=198
+LongitudNum=190
+SitioTornillo=11
 
 
 Perfil=str(PerfilNum)+' mm'
@@ -119,10 +120,6 @@ App.ActiveDocument.Sketch001.setDatum(6,App.Units.Quantity(str(PerfilNum/2.0)+' 
 App.ActiveDocument.recompute()
 Gui.getDocument('Sin_nombre').resetEdit()
 App.getDocument('Sin_nombre').recompute()
-FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "B"
-FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bo"
-FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bol"
-FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bolt"
 FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bolts"
 FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "E"
 FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Ex"
@@ -137,7 +134,7 @@ App.setActiveDocument("Sin_nombre")
 App.ActiveDocument=App.getDocument("Sin_nombre")
 Gui.ActiveDocument=Gui.getDocument("Sin_nombre")
 App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('DistanceY',1,3,11.364743)) 
-App.ActiveDocument.Sketch001.setDatum(7,App.Units.Quantity(Perfil))
+App.ActiveDocument.Sketch001.setDatum(7,App.Units.Quantity(str(SitioTornillo)+' mm'))
 App.ActiveDocument.recompute()
 Gui.getDocument('Sin_nombre').resetEdit()
 App.getDocument('Sin_nombre').recompute()
