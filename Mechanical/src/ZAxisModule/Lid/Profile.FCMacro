@@ -1,0 +1,221 @@
+import FreeCAD
+
+PerfilNum=20
+AnchoNum=1
+LongitudNum=198
+
+
+Perfil=str(PerfilNum)+' mm'
+Ancho=str(AnchoNum)+' mm'
+LongitudMitad=str(LongitudNum/2.0)+' mm'
+Longitud=str(LongitudNum)+' mm'
+
+
+App.newDocument("Sin_nombre")
+App.setActiveDocument("Sin_nombre")
+App.ActiveDocument=App.getDocument("Sin_nombre")
+Gui.ActiveDocument=Gui.getDocument("Sin_nombre")
+Gui.activateWorkbench("PartDesignWorkbench")
+App.activeDocument().addObject('Sketcher::SketchObject','Sketch')
+App.activeDocument().Sketch.Placement = App.Placement(App.Vector(0.000000,0.000000,0.000000),App.Rotation(0.500000,0.500000,0.500000,0.500000))
+Gui.activeDocument().setEdit('Sketch')
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(-57.936134,25.774614,0),App.Vector(-14.455854,26.573467,0)))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(-14.455854,26.573467,0),App.Vector(-21.873751,8.998759,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',0,2,1,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(-21.873751,8.998759,0),App.Vector(-54.740734,11.052947,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',1,2,2,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(-54.740734,11.052947,0),App.Vector(-58.278496,23.834553,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',2,2,3,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.movePoint(3,2,App.Vector(-58.278496,23.834553,0),0)
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',0,1,3,2)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Horizontal',0)) 
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Horizontal',2)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Vertical',3))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.movePoint(0,0,App.Vector(0.228239,-0.342363,0),1)
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Angle',0,2,1,1,1.135310)) 
+App.ActiveDocument.Sketch.setDatum(7,App.Units.Quantity('45.000000 deg'))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('DistanceY',3,13.666590)) 
+App.ActiveDocument.Sketch.setDatum(8,App.Units.Quantity(Ancho))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.movePoint(1,2,App.Vector(-5.212014,-5.380544,0),0)
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',0,2,-1,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('DistanceX',0,54.512495)) 
+App.ActiveDocument.Sketch.setDatum(10,App.Units.Quantity(Perfil))
+App.ActiveDocument.recompute()
+Gui.getDocument('Sin_nombre').resetEdit()
+App.getDocument('Sin_nombre').recompute()
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "P"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Pr"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Pri"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Pr"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Pro"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Prod"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Pro"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Prof"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Profi"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Profil"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch").Label = "Profile"
+App.activeDocument().addObject("PartDesign::Pad","Pad")
+App.activeDocument().Pad.Sketch = App.activeDocument().Sketch
+App.activeDocument().Pad.Length = 10.0
+App.ActiveDocument.recompute()
+Gui.activeDocument().hide("Sketch")
+Gui.activeDocument().setEdit('Pad',0)
+App.ActiveDocument.Pad.Length = 90.000000
+App.ActiveDocument.Pad.Reversed = 0
+App.ActiveDocument.Pad.Midplane = 0
+App.ActiveDocument.Pad.Length2 = 100.000000
+App.ActiveDocument.Pad.Type = 0
+App.ActiveDocument.Pad.UpToFace = None
+App.ActiveDocument.recompute()
+Gui.activeDocument().resetEdit()
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Length = '9 mm'
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Length = LongitudMitad
+App.activeDocument().addObject('Sketcher::SketchObject','Sketch001')
+App.activeDocument().Sketch001.Support = (App.ActiveDocument.Pad,["Face1"])
+App.activeDocument().recompute()
+Gui.activeDocument().setEdit('Sketch001')
+App.ActiveDocument.Sketch001.addGeometry(Part.Circle(App.Vector(-12.799421,35.618023,0),App.Vector(0,0,1),4.971823))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addGeometry(Part.Circle(App.Vector(-12.342936,20.097496,0),App.Vector(0,0,1),3.038716))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addGeometry(Part.Line(App.Vector(-20.559685,38.813423,0),App.Vector(-22.842113,22.379927,0)))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.toggleConstruction(2) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('Coincident',2,1,0,3)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('Coincident',2,2,1,3)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('Equal',0,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('Radius',0,4.971823)) 
+App.ActiveDocument.Sketch001.setDatum(3,App.Units.Quantity('2.000000 mm'))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('Vertical',2))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('DistanceY',2,-16.433496)) 
+App.ActiveDocument.Sketch001.setDatum(5,App.Units.Quantity('-15.000000 mm'))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.movePoint(2,0,App.Vector(28.073891,-11.298027,0),1)
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('DistanceX',1,3,7.514206)) 
+App.ActiveDocument.Sketch001.setDatum(6,App.Units.Quantity(str(PerfilNum/2.0)+' mm'))
+App.ActiveDocument.recompute()
+Gui.getDocument('Sin_nombre').resetEdit()
+App.getDocument('Sin_nombre').recompute()
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "B"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bo"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bol"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bolt"
+FreeCAD.getDocument("Sin_nombre").getObject("Sketch001").Label = "Bolts"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "E"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Ex"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Ext"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extr"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extru"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extrus"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extrusi"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extrusio"
+FreeCAD.getDocument("Sin_nombre").getObject("Pad").Label = "Extrusion"
+App.setActiveDocument("Sin_nombre")
+App.ActiveDocument=App.getDocument("Sin_nombre")
+Gui.ActiveDocument=Gui.getDocument("Sin_nombre")
+App.ActiveDocument.Sketch001.addConstraint(Sketcher.Constraint('DistanceY',1,3,11.364743)) 
+App.ActiveDocument.Sketch001.setDatum(7,App.Units.Quantity(Perfil))
+App.ActiveDocument.recompute()
+Gui.getDocument('Sin_nombre').resetEdit()
+App.getDocument('Sin_nombre').recompute()
+App.activeDocument().addObject("PartDesign::Pocket","Pocket")
+App.activeDocument().Pocket.Sketch = App.activeDocument().Sketch001
+App.activeDocument().Pocket.Length = 5.0
+App.ActiveDocument.recompute()
+Gui.activeDocument().hide("Sketch001")
+Gui.activeDocument().hide("Pad")
+Gui.activeDocument().setEdit('Pocket')
+Gui.ActiveDocument.Pocket.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
+Gui.ActiveDocument.Pocket.LineColor=Gui.ActiveDocument.Pad.LineColor
+Gui.ActiveDocument.Pocket.PointColor=Gui.ActiveDocument.Pad.PointColor
+App.ActiveDocument.Pocket.Length = 5.000000
+App.ActiveDocument.Pocket.Type = 1
+App.ActiveDocument.Pocket.UpToFace = None
+App.ActiveDocument.recompute()
+Gui.activeDocument().resetEdit()
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "B"
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "Bo"
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "Bol"
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "Bolt"
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "Bolts"
+FreeCAD.getDocument("Sin_nombre").getObject("Pocket").Label = "Bolts"
+Gui.getDocument('Sin_nombre').resetEdit()
+App.getDocument('Sin_nombre').recompute()
+Gui.activateWorkbench("PartWorkbench")
+__doc__=FreeCAD.getDocument("Sin_nombre")
+__doc__.addObject("Part::Mirroring")
+__doc__.ActiveObject.Source=__doc__.getObject("Pocket")
+__doc__.ActiveObject.Label="Bolts001 (Mirror #1)"
+__doc__.ActiveObject.Normal=(0,1,0)
+__doc__.ActiveObject.Base=(0,0,0)
+del __doc__
+Gui.ActiveDocument.ActiveObject.ShapeColor=Gui.ActiveDocument.Pocket.ShapeColor
+Gui.ActiveDocument.ActiveObject.LineColor=Gui.ActiveDocument.Pocket.LineColor
+Gui.ActiveDocument.ActiveObject.PointColor=Gui.ActiveDocument.Pocket.PointColor
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring").Normal = (0.00, 1.00, 1.00)
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring").Normal = (0.00, 1.00, -1.00)
+App.activeDocument().addObject("Part::MultiFuse","Fusion")
+App.activeDocument().Fusion.Shapes = [App.activeDocument().Pocket,App.activeDocument().Part__Mirroring,]
+Gui.activeDocument().Pocket.Visibility=False
+Gui.activeDocument().Part__Mirroring.Visibility=False
+Gui.ActiveDocument.Fusion.ShapeColor=Gui.ActiveDocument.Pocket.ShapeColor
+Gui.ActiveDocument.Fusion.DisplayMode=Gui.ActiveDocument.Pocket.DisplayMode
+App.ActiveDocument.recompute()
+__doc__=FreeCAD.getDocument("Sin_nombre")
+__doc__.addObject("Part::Mirroring")
+__doc__.ActiveObject.Source=__doc__.getObject("Fusion")
+__doc__.ActiveObject.Label="Fusion (Mirror #2)"
+__doc__.ActiveObject.Normal=(0,1,0)
+__doc__.ActiveObject.Base=(0,0,0)
+del __doc__
+Gui.ActiveDocument.ActiveObject.ShapeColor=Gui.ActiveDocument.Fusion.ShapeColor
+Gui.ActiveDocument.ActiveObject.LineColor=Gui.ActiveDocument.Fusion.LineColor
+Gui.ActiveDocument.ActiveObject.PointColor=Gui.ActiveDocument.Fusion.PointColor
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Normal = (0.00, 0.00, 0.00)
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Normal = (1.00, 0.00, 0.00)
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(0,0,9),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(0,0,99),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(0,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(9,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(99,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(1,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(19,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Sin_nombre").getObject("Part__Mirroring001").Placement = App.Placement(App.Vector(LongitudNum,0,0),App.Rotation(App.Vector(0,0,1),0))
+App.activeDocument().addObject("Part::MultiFuse","Fusion001")
+App.activeDocument().Fusion001.Shapes = [App.activeDocument().Part__Mirroring001,App.activeDocument().Fusion,]
+Gui.activeDocument().Part__Mirroring001.Visibility=False
+Gui.activeDocument().Fusion.Visibility=False
+Gui.ActiveDocument.Fusion001.ShapeColor=Gui.ActiveDocument.Part__Mirroring001.ShapeColor
+Gui.ActiveDocument.Fusion001.DisplayMode=Gui.ActiveDocument.Part__Mirroring001.DisplayMode
+App.ActiveDocument.recompute()
+App.ActiveDocument.addObject('Part::Feature','Fusion001').Shape=App.ActiveDocument.Fusion001.Shape.removeSplitter()
+App.ActiveDocument.ActiveObject.Label=App.ActiveDocument.Fusion001.Label
+Gui.ActiveDocument.Fusion001.hide()
+Gui.ActiveDocument.ActiveObject.ShapeColor=Gui.ActiveDocument.Fusion001.ShapeColor
+Gui.ActiveDocument.ActiveObject.LineColor=Gui.ActiveDocument.Fusion001.LineColor
+Gui.ActiveDocument.ActiveObject.PointColor=Gui.ActiveDocument.Fusion001.PointColor
+App.ActiveDocument.recompute()
+FreeCAD.getDocument("Sin_nombre").getObject("Fusion001001").Label = "Profile"
