@@ -1,0 +1,90 @@
+# Macro Begin: C:\Users\bq\Documents\Design\Sunrise\Mechanical\src\ZAxisModule\Lid\ALU90Profile.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+import FreeCAD
+import Sketcher
+import PartDesign
+import Part
+
+Perfil=20
+Longitud=295
+Grosor=1
+
+
+#Gui.activateWorkbench("PartDesignWorkbench")
+App.activeDocument().addObject('Sketcher::SketchObject','Sketch')
+App.activeDocument().Sketch.Placement = App.Placement(App.Vector(0.000000,0.000000,0.000000),App.Rotation(0.000000,0.000000,0.000000,1.000000))
+#Gui.activeDocument().activeView().setCamera('#Inventor V2.1 ascii \n OrthographicCamera {\n viewportMapping ADJUST_CAMERA \n position 0 0 87 \n orientation 0 0 1  0 \n nearDistance -112.88701 \n farDistance 287.28702 \n aspectRatio 1 \n focalDistance 87 \n height 143.52005 }')
+#Gui.activeDocument().setEdit('Sketch')
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(0.344445,33.641094,0),App.Vector(6.085242,33.411469,0)))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(6.085242,33.411469,0),App.Vector(6.085242,4.707460,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',0,2,1,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(6.085242,4.707460,0),App.Vector(31.804043,4.707460,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',1,2,2,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(31.804043,4.707460,0),App.Vector(32.263298,-0.574081,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',2,2,3,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(32.263298,-0.574081,0),App.Vector(-1.262976,-1.722240,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',3,2,4,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addGeometry(Part.Line(App.Vector(-1.262976,-1.722240,0),App.Vector(-1.951876,33.181831,0)))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',4,2,5,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',5,2,0,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Vertical',5))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Vertical',1))
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Vertical',3))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Horizontal',2)) 
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Horizontal',4)) 
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Horizontal',0)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Coincident',4,2,-1,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Equal',2,1)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Equal',4,5)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('Equal',0,3)) 
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('DistanceX',4,-32.492937)) 
+App.ActiveDocument.Sketch.setDatum(16,App.Units.Quantity('-'+str(Perfil)+' mm'))
+App.ActiveDocument.recompute()
+App.ActiveDocument.Sketch.addConstraint(Sketcher.Constraint('DistanceX',0,-6.206269)) 
+App.ActiveDocument.Sketch.setDatum(17,App.Units.Quantity(str(Grosor)+' mm'))
+App.ActiveDocument.recompute()
+#Gui.getDocument('Sin_nombre').resetEdit()
+App.activeDocument().addObject("PartDesign::Pad","Pad")
+App.activeDocument().Pad.Sketch = App.activeDocument().Sketch
+App.activeDocument().Pad.Length = 10.0
+App.ActiveDocument.recompute()
+#Gui.activeDocument().hide("Sketch")
+#Gui.activeDocument().setEdit('Pad',0)
+App.ActiveDocument.Pad.Length = Longitud
+App.ActiveDocument.Pad.Reversed = 0
+App.ActiveDocument.Pad.Midplane = 0
+App.ActiveDocument.Pad.Length2 = 100.000000
+App.ActiveDocument.Pad.Type = 0
+App.ActiveDocument.Pad.UpToFace = None
+App.ActiveDocument.recompute()
+#Gui.activeDocument().resetEdit()
+#Gui.activateWorkbench("PartWorkbench")
+App.ActiveDocument.addObject('Part::Feature','Pad').Shape=App.ActiveDocument.Pad.Shape.removeSplitter()
+App.ActiveDocument.ActiveObject.Label=App.ActiveDocument.Pad.Label
+Gui.ActiveDocument.Pad.hide()
+
+#Gui.ActiveDocument.ActiveObject.ShapeColor=Gui.ActiveDocument.Pad.ShapeColor
+#Gui.ActiveDocument.ActiveObject.LineColor=Gui.ActiveDocument.Pad.LineColor
+#Gui.ActiveDocument.ActiveObject.PointColor=Gui.ActiveDocument.Pad.PointColor
+App.ActiveDocument.recompute()
+FreeCAD.activeDocument().getObject("Pad001").Label = "Profile"
+App.activeDocument().removeObject("Pad")
+App.activeDocument().removeObject("Sketch")
+# Macro End: C:\Users\bq\Documents\Design\Sunrise\Mechanical\src\ZAxisModule\Lid\ALU90Profile.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
