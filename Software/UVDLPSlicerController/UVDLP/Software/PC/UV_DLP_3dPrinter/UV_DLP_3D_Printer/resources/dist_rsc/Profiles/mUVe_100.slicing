@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SliceBuildConfig FileVersion="2">
+  <DotsPermmX>102.4</DotsPermmX>
+  <DotsPermmY>76.8</DotsPermmY>
+  <XResolution>1024</XResolution>
+  <YResolution>768</YResolution>
+  <BlankTime>0</BlankTime>
+  <PlatformTemp>75</PlatformTemp>
+  <ExportSVG>0</ExportSVG>
+  <Export>False</Export>
+  <ExportPNG>False</ExportPNG>
+  <XOffset>0</XOffset>
+  <YOffset>0</YOffset>
+  <Direction>Bottom_Up</Direction>
+  <LiftDistance>2</LiftDistance>
+  <SlideTiltValue>0</SlideTiltValue>
+  <AntiAliasing>False</AntiAliasing>
+  <UseMainLiftGCode>False</UseMainLiftGCode>
+  <AntiAliasingValue>1.5</AntiAliasingValue>
+  <LiftFeedRate>400</LiftFeedRate>
+  <LiftRetractRate>400</LiftRetractRate>
+  <ExportOption>ZIP</ExportOption>
+  <FlipX>True</FlipX>
+  <FlipY>False</FlipY>
+  <Notes>
+  </Notes>
+  <GCodeHeader>;********** Header Start ********
+;Here you can set any G or M-Code which should be executed BEFORE the build process
+G21 ;Set units to be mm
+G91 ;Relative Positioning
+M17 ;Enable motors
+G28 Z0; home the z axis
+M650 D3 P500 S2 ; set the peel parameters
+;********** Header End **********
+</GCodeHeader>
+  <GCodeFooter>;********** Footer Start ********
+;&lt;Completed&gt;
+;********** Footer End ********
+</GCodeFooter>
+  <GCodePreslice>;********** Pre-Slice Start ********
+;Set up any GCode here to be executed before a lift
+;********** Pre-Slice End **********
+</GCodePreslice>
+  <GCodeLift>;********** Lift Sequence ********
+G1 Z(($LayerThickness) * $ZDir) F$ZLiftRate
+M651 ; perform the peel
+; No blanktime, we're relying on the ok of the m651
+;********** Lift Sequence **********
+</GCodeLift>
+  <SelectedInk>MakerJuiceGPlus</SelectedInk>
+  <InkConfig>
+    <Name>Default</Name>
+    <SliceHeight>0.05</SliceHeight>
+    <LayerTime>1000</LayerTime>
+    <FirstLayerTime>5000</FirstLayerTime>
+    <NumberofBottomLayers>3</NumberofBottomLayers>
+    <ResinPriceL>0</ResinPriceL>
+  </InkConfig>
+  <InkConfig>
+    <Name>MakerJuice_SF_Red</Name>
+    <SliceHeight>0.100000001490116</SliceHeight>
+    <LayerTime>13000</LayerTime>
+    <FirstLayerTime>20000</FirstLayerTime>
+    <NumberofBottomLayers>6</NumberofBottomLayers>
+    <ResinPriceL>0</ResinPriceL>
+  </InkConfig>
+  <InkConfig>
+    <Name>MakerJuiceGPlus</Name>
+    <SliceHeight>0.100000001490116</SliceHeight>
+    <LayerTime>3400</LayerTime>
+    <FirstLayerTime>8500</FirstLayerTime>
+    <NumberofBottomLayers>6</NumberofBottomLayers>
+    <ResinPriceL>0</ResinPriceL>
+  </InkConfig>
+  <MinTestExposure>500</MinTestExposure>
+  <TestExposureStep>200</TestExposureStep>
+  <ExportPreview>None</ExportPreview>
+  <UserParameters />
+</SliceBuildConfig>

@@ -1,0 +1,26 @@
+﻿Since the development on the new slicer has stalled (for now ), I'm continuing to develop
+my old slicer, there are several rendering issues to resolve
+they are not so much rendering issues, but open issues on how we should treat geometry
+and render them to the bitmap
+
+Currently, we generate a set of polylines that represent the inner and outer portions of the 
+image and use a scan line fill algorithm to render them properly
+
+The problem I am currently encounting is that sometimes, geometry overlaps
+this causes areas that should be filled to not be filled and vice versa
+The *optimal solution to this is to make sure geometries never overlap
+we can do this in several ways either in 3d as a union operation
+or in 2d as a crossings test somehow
+we can also do this in 2d by rendering each and every object separately, then ORing the
+resultant images together. this approach probably would be the simplest, but at an additonal 
+time cost.
+
+Saving and Loading of Slicer data
+we should implement a way to do the following:
+*save and load the actual slice data
+*save and load the pre-rendered slice images
+
+I think the best way to store this information is in a Zip file
+we can pre-render the images, along with slice data, the slice data
+should additionally contain the slicing coinfiguration data that was used to slice the images in the first place
+we can store all this info in a zip file along with the generated GCode, and load it up when we load the matching stl file.

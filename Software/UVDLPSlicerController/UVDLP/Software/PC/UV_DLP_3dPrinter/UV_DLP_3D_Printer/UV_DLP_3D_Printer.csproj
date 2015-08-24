@@ -1,0 +1,941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6AFDB07F-AC3C-48FC-8DA4-05B7892A8930}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UV_DLP_3D_Printer</RootNamespace>
+    <AssemblyName>CreationWorkshop</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cwlogo_dl.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releasex86|AnyCPU'">
+    <OutputPath>bin\Releasex86\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Licensing">
+      <HintPath>dlls\Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="3DEngine\ArcBall.cs" />
+    <Compile Include="3DEngine\AxisIndicator.cs" />
+    <Compile Include="3DEngine\C2DGraphics.cs" />
+    <Compile Include="3DEngine\CSG\CSG.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_csnode.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_model.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_plane.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_polygon.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_vector.cs" />
+    <Compile Include="3DEngine\CSG\csgjs_vertex.cs" />
+    <Compile Include="3DEngine\Cylinder3d.cs" />
+    <Compile Include="3DEngine\GLCamera.cs" />
+    <Compile Include="3DEngine\ISectData.cs" />
+    <Compile Include="3DEngine\Primatives\Material.cs" />
+    <Compile Include="3DEngine\ModelLoading\ModelLoader.cs" />
+    <Compile Include="3DEngine\ModelLoading\ModelLoaderType.cs" />
+    <Compile Include="3DEngine\ModelLoading\ModelLoaderAmf.cs" />
+    <Compile Include="3DEngine\Primatives\Path2D.cs" />
+    <Compile Include="3DEngine\Primatives\Plane3d.cs" />
+    <Compile Include="3DEngine\PreviewGenerator.cs" />
+    <Compile Include="3DEngine\Primitives.cs" />
+    <Compile Include="3DEngine\Primatives\Quad3d.cs" />
+    <Compile Include="3DEngine\RTUtils.cs" />
+    <Compile Include="3DEngine\Scene\SceneFile.cs" />
+    <Compile Include="3DEngine\Scene\SceneManifest.cs" />
+    <Compile Include="3DEngine\Supports\Support.cs" />
+    <Compile Include="3DEngine\Supports\SupportBase.cs" />
+    <Compile Include="3DEngine\ModelLoading\ThreeDSFile.cs" />
+    <Compile Include="3DEngine\Supports\SupportData.cs" />
+    <Compile Include="3DEngine\Undoer.cs" />
+    <Compile Include="Building\AuxBuildCmds.cs" />
+    <Compile Include="Building\AuxCmd.cs" />
+    <Compile Include="Configs\AppConfig.cs" />
+    <Compile Include="Configs\ConnectionConfig.cs" />
+    <Compile Include="Configs\DeviceDriverConfig.cs" />
+    <Compile Include="Configs\FDMSliceBuildConfig.cs" />
+    <Compile Include="Configs\InkConfig.cs" />
+    <Compile Include="Configs\MonitorConfig.cs" />
+    <Compile Include="Configs\ParmList.cs" />
+    <Compile Include="3DEngine\Supports\SupportConfig.cs" />
+    <Compile Include="Configs\UserParameterList.cs" />
+    <Compile Include="Configs\XmlHelper.cs" />
+    <Compile Include="Device_Interface\AutoDetect\ConnectionTester.cs" />
+    <Compile Include="Device_Interface\AutoDetect\SerialAutodetect.cs" />
+    <Compile Include="Device_Interface\DeepImager\DIDriverStatus.cs" />
+    <Compile Include="Device_Interface\DeepImager\DIDriver.cs" />
+    <Compile Include="Device_Interface\DeviceDriver.cs" />
+    <Compile Include="Device_Interface\ManualControl.cs" />
+    <Compile Include="Device_Interface\NULLdriver.cs" />
+    <Compile Include="Device_Interface\DriverFactory.cs" />
+    <Compile Include="Device_Interface\GenericDriver.cs" />
+    <Compile Include="Device_Interface\RobotFactorySRL_3DLPrinter.cs" />
+    <Compile Include="Device_Interface\Uncia\UnciaDriver.cs" />
+    <Compile Include="GUI\Controls\ctl3DView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctl3DView.Designer.cs">
+      <DependentUpon>ctl3DView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlGcodeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlGcodeView.Designer.cs">
+      <DependentUpon>ctlGcodeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlMainConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlMainConfig.Designer.cs">
+      <DependentUpon>ctlMainConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlManualControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlManualControl.Designer.cs">
+      <DependentUpon>ctlManualControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlSliceGCodePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlSliceGCodePanel.Designer.cs">
+      <DependentUpon>ctlSliceGCodePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlUserParamEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlUserParamEdit.Designer.cs">
+      <DependentUpon>ctlUserParamEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlGCodeManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlGCodeManual.Designer.cs">
+      <DependentUpon>ctlGCodeManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlHeatTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlHeatTemp.Designer.cs">
+      <DependentUpon>ctlHeatTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlMachineConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlMachineConfig.Designer.cs">
+      <DependentUpon>ctlMachineConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlMainManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlMainManual.Designer.cs">
+      <DependentUpon>ctlMainManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlProjectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ManualControls\ctlProjectorControl.Designer.cs">
+      <DependentUpon>ctlProjectorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlSliceView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlSliceView.Designer.cs">
+      <DependentUpon>ctlSliceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlToolpathGenConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlToolpathGenConfig.Designer.cs">
+      <DependentUpon>ctlToolpathGenConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\ctlGL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\C9Patch.cs" />
+    <Compile Include="GUI\CustomGUI\ctlCollapse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlCollapse.Designer.cs">
+      <DependentUpon>ctlCollapse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlConfig.Designer.cs">
+      <DependentUpon>ctlConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCShutter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCTemp.Designer.cs">
+      <DependentUpon>ctlMCTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCXY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCXY.Designer.cs">
+      <DependentUpon>ctlMCXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMCZ.Designer.cs">
+      <DependentUpon>ctlMCZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMirror.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMirror.Designer.cs">
+      <DependentUpon>ctlMirror.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlOnOff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlParameter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlParameter.Designer.cs">
+      <DependentUpon>ctlParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlPreview.Designer.cs">
+      <DependentUpon>ctlPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlRFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlScene.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlScene.Designer.cs">
+      <DependentUpon>ctlScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlAnchorable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlHScroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlHScroll.Designer.cs">
+      <DependentUpon>ctlHScroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlImageButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlInfoItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlInfoItem.Designer.cs">
+      <DependentUpon>ctlInfoItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMeshTools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlMove.Designer.cs">
+      <DependentUpon>ctlMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlNumber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlNumber.Designer.cs">
+      <DependentUpon>ctlNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlObjectInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlObjectInfo.Designer.cs">
+      <DependentUpon>ctlObjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlProgress.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlScale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlScale.Designer.cs">
+      <DependentUpon>ctlScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlSupports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlSupports.Designer.cs">
+      <DependentUpon>ctlSupports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlRotate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlRotate.Designer.cs">
+      <DependentUpon>ctlRotate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlTitle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlTitle.Designer.cs">
+      <DependentUpon>ctlTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlUserPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlView.Designer.cs">
+      <DependentUpon>ctlView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\Expanding\ctlMoveExpand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\Expanding\ctlMoveExpand.Designer.cs">
+      <DependentUpon>ctlMoveExpand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlVScroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\ctlVScroll.Designer.cs">
+      <DependentUpon>ctlVScroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\frmBmpSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\frmBmpSplash.Designer.cs">
+      <DependentUpon>frmBmpSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\GuiConfigDB.cs" />
+    <Compile Include="GUI\CustomGUI\GuiConfigManager.cs" />
+    <Compile Include="GUI\CustomGUI\sMiiCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomGUI\sMiiCtrl.Designer.cs">
+      <DependentUpon>sMiiCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ExportControls\ctlExportB9Creator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ExportControls\ctlExportB9Creator.Designer.cs">
+      <DependentUpon>ctlExportB9Creator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmAmfSmoothing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmAmfSmoothing.Designer.cs">
+      <DependentUpon>frmAmfSmoothing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmBuildSizeCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmBuildSizeCalib.Designer.cs">
+      <DependentUpon>frmBuildSizeCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmCalibResin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmCalibResin.Designer.cs">
+      <DependentUpon>frmCalibResin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmConnection.Designer.cs">
+      <DependentUpon>frmConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmExport.Designer.cs">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMain2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMeshHoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMeshHoles.Designer.cs">
+      <DependentUpon>frmMeshHoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMiiTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMiiTest.Designer.cs">
+      <DependentUpon>frmMiiTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmPluginManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmPluginManager.Designer.cs">
+      <DependentUpon>frmPluginManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmPluginTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmPluginTester.Designer.cs">
+      <DependentUpon>frmPluginTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmPrefs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmPrefs.Designer.cs">
+      <DependentUpon>frmPrefs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmProfileName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmProfileName.Designer.cs">
+      <DependentUpon>frmProfileName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmProjCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmProjCommand.Designer.cs">
+      <DependentUpon>frmProjCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmSlice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSlice.Designer.cs">
+      <DependentUpon>frmSlice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmSliceProfileHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSliceProfileHelp.Designer.cs">
+      <DependentUpon>frmSliceProfileHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licensing\KeyRing.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Plugin\IPluginHost.cs" />
+    <Compile Include="Plugin\PluginEntry.cs" />
+    <Compile Include="Plugin\PluginItem.cs" />
+    <Compile Include="Plugin\PluginLite.cs" />
+    <Compile Include="Plugin\PluginOptions.cs" />
+    <Compile Include="Plugin\PluginResources.cs" />
+    <Compile Include="Plugin\PluginStates.cs" />
+    <Compile Include="Projector_LCD\prjcmdlst.cs" />
+    <Compile Include="Projector_LCD\ProjectorCommand.cs" />
+    <Compile Include="Configs\Parm.cs" />
+    <Compile Include="Slicing\PreProcessor.cs" />
+    <Compile Include="Slicing\SliceFile.cs" />
+    <Compile Include="3DEngine\Supports\SupportGenerator.cs" />
+    <Compile Include="Utility\B9JExporter.cs" />
+    <Compile Include="Utility\BinPacker.cs" />
+    <Compile Include="Utility\CallbackHandler.cs" />
+    <Compile Include="Utility\CWExporter.cs" />
+    <Compile Include="Utility\DebugLogger.cs" />
+    <Compile Include="GUI\frmDLP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDLP.Designer.cs">
+      <DependentUpon>frmDLP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Slicing\GCodeFile.cs" />
+    <Compile Include="Slicing\OldSlicer\GCodeGenerator.cs" />
+    <Compile Include="Utility\ImageUtils\ColorCalculator.cs" />
+    <Compile Include="Utility\ImageUtils\ExtBitmap.cs" />
+    <Compile Include="Utility\ImageUtils\LockBitmap.cs" />
+    <Compile Include="Utility\Logger.cs" />
+    <Compile Include="Configs\MachineConfig.cs" />
+    <Compile Include="Configs\Settings.cs" />
+    <Compile Include="Device_Interface\DeviceInterface.cs" />
+    <Compile Include="3DEngine\Engine3d.cs" />
+    <Compile Include="3DEngine\Primatives\Matrix3D.cs" />
+    <Compile Include="3DEngine\Primatives\MinMax.cs" />
+    <Compile Include="3DEngine\Object3d.cs" />
+    <Compile Include="3DEngine\Primatives\Point3d.cs" />
+    <Compile Include="3DEngine\Primatives\Polygon.cs" />
+    <Compile Include="3DEngine\Primatives\PolyLine3d.cs" />
+    <Compile Include="BuildManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Controls\ctl3DView.resx">
+      <DependentUpon>ctl3DView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlGcodeView.resx">
+      <DependentUpon>ctlGcodeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlMainConfig.resx">
+      <DependentUpon>ctlMainConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlManualControl.resx">
+      <DependentUpon>ctlManualControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlSliceGCodePanel.resx">
+      <DependentUpon>ctlSliceGCodePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlUserParamEdit.resx">
+      <DependentUpon>ctlUserParamEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ManualControls\ctlGCodeManual.resx">
+      <DependentUpon>ctlGCodeManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ManualControls\ctlHeatTemp.resx">
+      <DependentUpon>ctlHeatTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlMachineConfig.resx">
+      <DependentUpon>ctlMachineConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlSliceView.resx">
+      <DependentUpon>ctlSliceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ctlToolpathGenConfig.resx">
+      <DependentUpon>ctlToolpathGenConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ManualControls\ctlMainManual.resx">
+      <DependentUpon>ctlMainManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ManualControls\ctlProjectorControl.resx">
+      <DependentUpon>ctlProjectorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlCollapse.resx">
+      <DependentUpon>ctlCollapse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlConfig.resx">
+      <DependentUpon>ctlConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlImageButton.resx">
+      <DependentUpon>ctlImageButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlMCTemp.resx">
+      <DependentUpon>ctlMCTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlMirror.resx">
+      <DependentUpon>ctlMirror.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlParameter.resx">
+      <DependentUpon>ctlParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlPreview.resx">
+      <DependentUpon>ctlPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlScene.resx">
+      <DependentUpon>ctlScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlHScroll.resx">
+      <DependentUpon>ctlHScroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlInfoItem.resx">
+      <DependentUpon>ctlInfoItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlMeshTools.resx">
+      <DependentUpon>ctlMeshTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlMove.resx">
+      <DependentUpon>ctlMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlNumber.resx">
+      <DependentUpon>ctlNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlObjectInfo.resx">
+      <DependentUpon>ctlObjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlScale.resx">
+      <DependentUpon>ctlScale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlRotate.resx">
+      <DependentUpon>ctlRotate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlSupports.resx">
+      <DependentUpon>ctlSupports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlTitle.resx">
+      <DependentUpon>ctlTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlView.resx">
+      <DependentUpon>ctlView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\Expanding\ctlMoveExpand.resx">
+      <DependentUpon>ctlMoveExpand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\ctlVScroll.resx">
+      <DependentUpon>ctlVScroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\frmBmpSplash.resx">
+      <DependentUpon>frmBmpSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomGUI\sMiiCtrl.resx">
+      <DependentUpon>sMiiCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ExportControls\ctlExportB9Creator.resx">
+      <DependentUpon>ctlExportB9Creator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmAmfSmoothing.resx">
+      <DependentUpon>frmAmfSmoothing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmBuildSizeCalib.resx">
+      <DependentUpon>frmBuildSizeCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmCalibResin.resx">
+      <DependentUpon>frmCalibResin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmConnection.resx">
+      <DependentUpon>frmConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDLP.resx">
+      <DependentUpon>frmDLP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmExport.resx">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMeshHoles.resx">
+      <DependentUpon>frmMeshHoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMiiTest.resx">
+      <DependentUpon>frmMiiTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmPluginManager.resx">
+      <DependentUpon>frmPluginManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmPluginTester.resx">
+      <DependentUpon>frmPluginTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmPrefs.resx">
+      <DependentUpon>frmPrefs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmProfileName.resx">
+      <DependentUpon>frmProfileName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmProjCommand.resx">
+      <DependentUpon>frmProjCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSlice.resx">
+      <DependentUpon>frmSlice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSliceProfileHelp.resx">
+      <DependentUpon>frmSliceProfileHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Slicing\OldSlicer\Slice.cs" />
+    <Compile Include="Configs\SliceBuildConfig.cs" />
+    <Compile Include="Slicing\OldSlicer\Slicer.cs" />
+    <Compile Include="Utility\DisplayManager.cs" />
+    <Compile Include="Utility\FingerPrint.cs" />
+    <Compile Include="Utility\Sequences\CommandSequence.cs" />
+    <Compile Include="Utility\Sequences\ProcessSequence.cs" />
+    <Compile Include="Utility\Sequences\SequenceManager.cs" />
+    <Compile Include="Utility\ServerContact.cs" />
+    <Compile Include="Utility\Utility.cs" />
+    <Compile Include="UVDLPApp.cs" />
+    <Compile Include="3DEngine\Primatives\Vector3d.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\GuiConfigTest.xml" />
+    <Content Include="ccw_slice_icon_final.ico" />
+    <Content Include="cwlogo_dl.ico" />
+    <Content Include="Notes.txt" />
+    <None Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Left1Blue.png" />
+    <None Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Right1Blue.png" />
+    <None Include="resources\9-4-2013 12-40-20 PM.png" />
+    <None Include="resources\9-6-2013 12-05-50 AM.png" />
+    <None Include="resources\rounded_blue_home_button_4805.jpg" />
+    <None Include="resources\animatedTurningHelix.gif" />
+    <None Include="resources\niceAnimatedTriangles.gif" />
+    <None Include="resources\turningGear.gif" />
+    <None Include="resources\paypal-donate-button.jpg" />
+    <None Include="resources\Donate1.png" />
+    <None Include="resources\donate.gif" />
+    <None Include="resources\position.jpg" />
+    <None Include="resources\buttHome.bmp" />
+    <None Include="resources\CustomGUI\homeButt.png" />
+    <None Include="resources\CustomGUI\butMinus.png" />
+    <None Include="resources\CustomGUI\buttMove.png" />
+    <None Include="resources\CustomGUI\buttPlus.png" />
+    <None Include="resources\CustomGUI\buttRotate.png" />
+    <None Include="resources\CustomGUI\buttScale.png" />
+    <None Include="resources\CustomGUI\buttOnPlatform.png" />
+    <None Include="resources\CustomGUI\buttCenter.png" />
+    <None Include="resources\CustomGUI\buttV.png" />
+    <None Include="resources\CustomGUI\buttSupport.png" />
+    <None Include="resources\CustomGUI\buttAddSupport.png" />
+    <None Include="resources\CustomGUI\buttAutoSupport.png" />
+    <None Include="resources\CustomGUI\buttGear.png" />
+    <None Include="resources\CustomGUI\buttChecked.png" />
+    <None Include="resources\CustomGUI\buttView.png" />
+    <None Include="resources\CustomGUI\buttTransparent.png" />
+    <None Include="resources\CustomGUI\buttShowsliceh.png" />
+    <None Include="resources\CustomGUI\buttOinfo.png" />
+    <None Include="resources\CustomGUI\buttShowslice.png" />
+    <None Include="resources\CustomGUI\buttOpenClose.png" />
+    <None Include="resources\CustomGUI\buttTreeview.png" />
+    <None Include="resources\CustomGUI\buttDownward.png" />
+    <None Include="resources\CustomGUI\buttViewDown.png" />
+    <None Include="resources\CustomGUI\buttautoDown.png" />
+    <None Include="resources\CustomGUI\buttConsole.png" />
+    <None Include="resources\CustomGUI\buttPlay.png" />
+    <None Include="resources\CustomGUI\buttSlice.png" />
+    <None Include="resources\CustomGUI\buttStop.png" />
+    <None Include="resources\CustomGUI\buttConnect.png" />
+    <None Include="resources\CustomGUI\buttDisconnect.png" />
+    <None Include="resources\CustomGUI\buttOpenFile.png" />
+    <None Include="resources\CustomGUI\buttPause.png" />
+    <None Include="resources\CustomGUI\buttViewGcode.png" />
+    <None Include="resources\CustomGUI\buttViewModel.png" />
+    <None Include="resources\CustomGUI\buttViewSlice.png" />
+    <None Include="resources\CustomGUI\buttSave.png" />
+    <None Include="resources\splash.png" />
+    <None Include="resources\CustomGUI\buttPrevDisp.png" />
+    <None Include="resources\CustomGUI\buttUndo.png" />
+    <None Include="resources\CustomGUI\buttRedo.png" />
+    <None Include="resources\cwlogo_dl.ico" />
+    <None Include="resources\CustomGUI\buttUnion.png" />
+    <None Include="resources\CustomGUI\buttIntersect.png" />
+    <None Include="resources\CustomGUI\buttMeshTools.png" />
+    <None Include="resources\CustomGUI\buttSubtract.png" />
+    <None Include="resources\CustomGUI\buttPTorus.png" />
+    <None Include="resources\CustomGUI\buttPCone.png" />
+    <None Include="resources\CustomGUI\buttPCube.png" />
+    <None Include="resources\CustomGUI\buttPCylinder.png" />
+    <None Include="resources\CustomGUI\buttPSphere.png" />
+    <None Include="resources\CustomGUI\buttBoundingBox.png" />
+    <None Include="resources\move_bgnd.png" />
+    <None Include="resources\cwlogo_round.png" />
+    <None Include="resources\cwtexture1.png" />
+    <None Include="resources\cwtexture1_index.txt" />
+    <None Include="resources\GuiConfig.txt" />
+    <None Include="resources\CustomGUI\checkRect.png" />
+    <None Include="resources\Calibri22_metrics.txt" />
+    <None Include="resources\Arial18_metrics.txt" />
+    <None Include="resources\CustomGUI\buttMachineControl.png" />
+    <None Include="resources\CustomGUI\buttSliceConf.png" />
+    <None Include="resources\CustomGUI\buttMachineConfig.png" />
+    <None Include="resources\CustomGUI\buttTemperature.png" />
+    <None Include="resources\CustomGUI\buttProjector.png" />
+    <None Include="resources\CustomGUI\buttSendGcode.png" />
+    <None Include="resources\CustomGUI\buttMmInch.png" />
+    <None Include="resources\CustomGUI\buttInchMm.png" />
+    <None Include="resources\CustomGUI\buttMirror.png" />
+    <None Include="resources\CustomGUI\buttStateTrig.png" />
+    <None Include="resources\CustomGUI\buttArrange.png" />
+    <None Include="resources\CustomGUI\SelOutline.png" />
+    <None Include="resources\CustomGUI\SelShaded.png" />
+    <None Include="resources\CustomGUI\buttSupBase.png" />
+    <None Include="resources\CustomGUI\buttProjOff.png" />
+    <None Include="resources\CustomGUI\buttProjOn.png" />
+    <None Include="resources\CustomGUI\buttZeroZ.png" />
+    <None Include="resources\CustomGUI\buttHomeZ.png" />
+    <None Include="resources\CustomGUI\buttGoZHome.png" />
+    <None Include="resources\CustomGUI\buttX.png" />
+    <None Include="resources\CustomGUI\buttModifySupport.png" />
+    <None Include="resources\CustomGUI\buttScene.png" />
+    <Content Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Down1.png" />
+    <Content Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Up1.png" />
+    <None Include="resources\MachineControl\mc_px0.png" />
+    <None Include="resources\MachineControl\mc_px1.png" />
+    <None Include="resources\MachineControl\mc_px2.png" />
+    <None Include="resources\MachineControl\mc_px3.png" />
+    <None Include="resources\MachineControl\mc_cent.png" />
+    <None Include="resources\MachineControl\mc_home.png" />
+    <None Include="resources\MachineControl\mc_trcorner.png" />
+    <None Include="resources\MachineControl\mc_uparrow.png" />
+    <None Include="resources\MachineControl\mc_ztop.png" />
+    <None Include="resources\MachineControl\mc_centn.png" />
+    <None Include="resources\MachineControl\mc_uparrown.png" />
+    <None Include="resources\MachineControl\mc_z0.png" />
+    <None Include="resources\MachineControl\mc_z1.png" />
+    <None Include="resources\MachineControl\mc_z2.png" />
+    <None Include="resources\MachineControl\mc_z3.png" />
+    <None Include="resources\MachineControl\mc_temper.png" />
+    <None Include="resources\MachineControl\mc_tpoint.png" />
+    <None Include="resources\MachineControl\mc_onoff.png" />
+    <None Include="resources\MachineControl\mc_onoffbgnd.png" />
+    <None Include="resources\MachineControl\mc_onoffslide.png" />
+    <None Include="resources\Splash1.png" />
+    <None Include="resources\MachineControl\mc_shuttclose.png" />
+    <None Include="resources\MachineControl\mc_shuttopen.png" />
+    <Content Include="sharebot.ico" />
+    <Content Include="Slicing\OldSlicer\OldSliceNotes.txt" />
+    <Content Include="Slicing\SlicerNotes1.txt" />
+    <None Include="resources\Load.jpg" />
+    <None Include="resources\slice.jpg" />
+    <None Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Down1Blue.png" />
+    <None Include="resources\IconsLandVistaArrowIconsDemo\PNG\64x64\Up1Blue.png" />
+    <None Include="resources\021\move.png" />
+    <None Include="resources\021\Refresh-icon.png" />
+    <None Include="resources\021\Disconnect.png" />
+    <None Include="resources\021\Connect.png" />
+    <None Include="resources\021\bfzn_006.png" />
+    <None Include="resources\021\bfzn_004.png" />
+    <None Include="resources\021\bfzn_003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)resources\dist_rsc\*.*" "$(TargetDir)" /s /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

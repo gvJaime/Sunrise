@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SliceBuildConfig FileVersion="1">
+  <DotsPermmX>102.4</DotsPermmX>
+  <DotsPermmY>76.8</DotsPermmY>
+  <XResolution>1024</XResolution>
+  <YResolution>768</YResolution>
+  <SliceHeight>0.0500000007450581</SliceHeight>
+  <LayerTime>3000</LayerTime>
+  <FirstLayerTime>7000</FirstLayerTime>
+  <BlankTime>6000</BlankTime>
+  <PlatformTemp>75</PlatformTemp>
+  <ExportSVG>False</ExportSVG>
+  <Export>False</Export>
+  <XOffset>0</XOffset>
+  <YOffset>0</YOffset>
+  <NumberofBottomLayers>3</NumberofBottomLayers>
+  <Direction>Bottom_Up</Direction>
+  <LiftDistance>2</LiftDistance>
+  <SlideTiltValue>2</SlideTiltValue>
+  <AntiAliasing>True</AntiAliasing>
+  <UseMainLiftGCode>False</UseMainLiftGCode>
+  <AntiAliasingValue>1.5</AntiAliasingValue>
+  <LiftFeedRate>100</LiftFeedRate>
+  <LiftRetractRate>200</LiftRetractRate>
+  <ExportOption>SUBDIR</ExportOption>
+  <FlipX>False</FlipX>
+  <FlipY>False</FlipY>
+  <Notes>
+  </Notes>
+  <ResinPriceL>0</ResinPriceL>
+  <GCodeHeader>;********** Header Start ********
+;For the Deep Imager 5, the M600 command triggers the start of the build
+M600
+M602 40 50 32 ff ff ff ff be
+;Add 3 'Base' layers
+;&lt;Slice&gt; Special_Base
+;&lt;Delay&gt; 6000
+;&lt;Slice&gt; Blank
+G1 Z.05 
+;&lt;Delay&gt; 6000
+;&lt;Slice&gt; Special_Base
+;&lt;Delay&gt; 6000
+;&lt;Slice&gt; Blank
+G1 Z.05 
+;&lt;Delay&gt; 6000
+;&lt;Slice&gt; Special_Base
+;&lt;Delay&gt; 6000
+;&lt;Slice&gt; Blank
+G1 Z.05 
+;&lt;Delay&gt; 6000
+;********** Header End **********
+</GCodeHeader>
+  <GCodeFooter>;********** Footer Start ********
+;&lt;Completed&gt;
+; for the Deep Image 5, M601 is the command to enter Standy Mode
+M601
+;********** Footer End ********
+</GCodeFooter>
+  <GCodePreslice>;********** Pre-Slice Start ********
+;Set up any GCode here to be executed before a lift
+;********** Pre-Slice End **********
+</GCodePreslice>
+  <GCodeLift>;********** Lift Sequence ********
+; for the Deep Imager 5, this will trigger the lift sequence
+G1 Z$LayerThickness 
+;&lt;Delay&gt; %d$BlankTime
+;********** Lift Sequence **********
+</GCodeLift>
+</SliceBuildConfig>

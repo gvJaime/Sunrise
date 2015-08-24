@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MachineConfig FileVersion="1">
+  <PlatformXSize>102</PlatformXSize>
+  <PlatformYSize>77</PlatformYSize>
+  <PlatformZSize>100</PlatformZSize>
+  <MaxXFeedRate>100</MaxXFeedRate>
+  <MaxYFeedRate>100</MaxYFeedRate>
+  <MaxZFeedRate>100</MaxZFeedRate>
+  <MachineType>UV_DLP</MachineType>
+  <MotorsDriverConfig>
+    <DriverType>eGENERIC</DriverType>
+    <ComPortSettings>
+      <PortName>COM58</PortName>
+      <Speed>115200</Speed>
+      <Databits>8</Databits>
+      <Parity>None</Parity>
+      <Stopbits>One</Stopbits>
+      <Handshake>None</Handshake>
+    </ComPortSettings>
+  </MotorsDriverConfig>
+  <MonitorDriverConfig>
+    <DLP_X_Res>1920</DLP_X_Res>
+    <DLP_Y_Res>1080</DLP_Y_Res>
+    <MonitorID>\\.\DISPLAY1</MonitorID>
+    <DisplayCommEnabled>False</DisplayCommEnabled>
+    <ComPortSettings>
+      <PortName>Com1</PortName>
+      <Speed>115200</Speed>
+      <Databits>8</Databits>
+      <Parity>None</Parity>
+      <Stopbits>One</Stopbits>
+      <Handshake>None</Handshake>
+    </ComPortSettings>
+  </MonitorDriverConfig>
+</MachineConfig>

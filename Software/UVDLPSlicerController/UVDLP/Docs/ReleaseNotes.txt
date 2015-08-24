@@ -1,0 +1,84 @@
+	Fixed Y-Axis reflection on Slices
+	Fixed Wireframe drawing of models
+	added in dialog for 3d support generation
+	Changed Lift up to be different feedrate
+	Changed output png files to go to zip instead of subdirectory
+
+08/27/2013 Beta 11 Release
+	Fixed ASCII STL Loading
+	Added 3d polygon backface clipping
+	Fixed 3d viewing slowdown issue
+	Added Wavefront OBJ Model Loading
+	Added 3D Studio Max 3DS Model Loading
+	Fixed Slicing Profile Accessor bug.
+	Added machine config to GCode header.
+	Updated manual to include website and new code contributor
+	New lift sequences and GCode fixes
+
+07/30/2013 Beta 10 Release
+	Fixed Localization Issues
+	Added preslice.gcode 
+	Added tabs for GCode (preslice.gcode, prelift,postlist,start,end) on Slice options screen
+	Lift fixes
+		go up lift dist
+		go back down (lift - layer height)
+
+	Added lift sequence prior to first layer
+	Added Coordinated Tilt / Slide support	
+	Added support for multiple slicing/building profiles
+	Changed mouse view controls for more control (pan,zoom,rotate)
+	Added Machine and profile names to slice display & Main display
+	Added bi-cubic antialiasing of images
+	Added control to show current viewed slice #
+	Updated manual.
+
+
+04/16/2013 Alpha 09 Release
+	Bug fixes
+	preliminary code support for Support generation
+	changed to relative paths
+	distributing multiple machine profiles
+	Added ability to save scene
+	line smoothing
+	Additional 3DLPrinter support
+	Slicing speed improvement
+
+03/12/2013 Alpha 06 Release
+	Fixed tons of stuff
+	work on new slicer
+	better gui
+	added scene tree
+	Preliminary support for 3DLPrinter driver
+	
+02/28/2013 Alpha 05 
+	Fixed view controls
+	Improved slicing speed by ~25%
+	Added DLP Calibration screen
+	Added in DLP Blank Screen
+	Added in Machine Profile Manager to support multiple machine configurations
+	Various GUI Improvements
+	Began writing new Slicing Code for other machine types
+
+02/25/2013 Alpha 04
+	Added in the ability to load multiple objects
+	Implemented Move / Rotate / Scale
+	implemented Slicing of entire scene
+	GUI changes / fixes
+
+02/22/2013 Alpha 03 release
+	Added GCode Load/Save functionality
+	Added Pixel offset to generated slices
+	Added Lift control with pre and post-lift gcode
+	Added blank screen with additional blank delay
+	Added a direction flag to control top-down or bottom-up machines
+
+02/22/2013 Initial Alpha 02 release
+	Added in Raw GCode display to send GCodes
+	Fixed Build Issue
+	Added in First Layer exposure time
+	Added in Z Feed rate in Machine Configuration
+	Temporarily changed GCode generation to use relative movements
+	Removed front-page connection serial port. Connection config is now done through connection screen.
+
+02/21/2013 Initial Alpha 01 release
+

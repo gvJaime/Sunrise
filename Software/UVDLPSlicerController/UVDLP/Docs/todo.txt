@@ -1,0 +1,90 @@
+
+
+Add PLY support
+Add ASCII support?
+Add Triangulate function
+
+
+Support automatic time delay calculation in GUI for layer time
+
+support generation
+	2d/3d
+Skirt/Brim/Raft functionality
+
+Better Exports/Imports of Slicing Data through one or more of the following:
+
+SVG import/export
+SLI Slice Layer Interface export
+CLI Common Layer Interface export <- http://www.forwiss.uni-passau.de/~welisch/papers/cli_format.html
+USF Universal Slice File
+SLC File
+SSL Statasys Layer File
+
+
+GCode reference help section loaded from file
+
+Add class to launch/ wait for an external process
+Firmware upload via AVRDude
+
+support for powder based printers
+click on objects to select
+show selected in different color
+GCode interpreter for 3DLPrinter
+additional controls for dlprinter
+Add Generic variables for XML & Slicing!!
+
+Bugs**************************************
+
+
+Improvement Requests:***************************
+
+FEATURE-REQUESTS may be:
+1.
+A function to IMPORT Pictures and a coresponding  G-Codegenerator that creates the GCode for the number of Pictures Imported.
+This would give people the possibility to use Other slicers like "VISCam RP" an others!!!!!!!!!
+
+
+
+Completed**********************************
+*Can't select other build/slice profile - Fixed
+*Remove the comments being sent to the Firmware
+*Add homing for x/y/z in machine control section
+*Support Multiple Machine types:
+	Add in support for launching an external slicer (Slic3r)
+	Support multiple machine configuration types (import/export skeinforge types?)
+	add extruder controls (extrude,reverse,rate)
+	add temp controls (hot bed, extruder(s))
+
+*Implement projector controls 
+
+*Add Better messages for user events
+	Build started, stopped, layer, completed, etc...
+*Add optional homing commands for axises
+	this would help with shutter controls, as well as initial machine start
+
+*Add better controls on control panel
+*Fixed ASCII STL Loading
+*Added 3d view frustrum clipping
+*Add 3ds file support
+*Add 3d polygon backplane clipping via normal and dp to view vector
+
+*multiple config support
+	slice profiles
+*Image Anti-Aliasing
+	render image at 150% value and rescale to 100%
+*Update Documentation
+* Fix localization
+* Add preslice.gcode 
+* Add screen for GCode (preslice.gcode, prelift,postlist,start,end)
+* Lift fixes
+	go up lift dist
+	go back down (lift - layer height)
+* Add lift sequence prior to first layer
+* Add Coordinated Tilt / Slide support
+* Add Machine and profile names to:
+	slice display
+	main display
+* Add a control to show current slice # of total slice numbers
+*Add dxf file support
+*Add obj file support
+
