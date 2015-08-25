@@ -1,3 +1,0 @@
-[submodule "Firmware/Sunrise-fw"]
-	path = Firmware/Sunrise-fw
-	url = git@github.com:elgambitero/Sunrise-fw.git
