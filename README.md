@@ -43,14 +43,16 @@ Folder content is descripted below
 
 ###Sunrise v0.2 (in development)
 
-<img src="./doc/README/Sunrise02.png" width="200" align="center"><img src="./doc/README/Sunrise02real.JPG" height="284" align="center">
+<img src="./doc/README/Sunrise02.png" width="200" align="center"><img src="./doc/README/Sunrise02real.JPG" height="285" align="center">
 
-####Specs (may be changed):
+####Specs (may change during development):
+* Motor assisted projector axis for resolution adjustment.
 * Aluminium extrusion profiles + printed parts based structure. Way more rigid than v0.1.
 * Hacked [Optoma ML750][Optoma-link] pico-projector.
 * Expandable design, able to hold several projectors.
 * [Arduino UNO][AU-link] + [CNCShield][CNCS-link] + [a modified GRBL][Sunrise-fw] for motion control.
 * [Creation Workshop][CW] as slicer and projector control.
+* QuickFit for easy replacement of the vat.
 
 
 ###[Sunrise v0.1][Sunrise-v0.1]
