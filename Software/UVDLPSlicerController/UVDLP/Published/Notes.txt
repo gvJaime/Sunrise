@@ -1,1 +1,0 @@
-This directory is where the published releases of the software reside.
