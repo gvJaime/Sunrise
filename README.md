@@ -39,6 +39,12 @@ Folder content is descripted below
 * `doc`: useful files for documentation
 * `Software`: Provisional, holds useful software until it gets big enough for it to have its own repo.
 
+To take advantage of git diff features on FCStd files, paste this lines on .git/config:
+```
+[include]
+    path = ../.gitconfig
+```
+
 ##History
 
 ###Sunrise v0.2 (in development)
