@@ -49,7 +49,7 @@ To take advantage of git diff features on FCStd files, paste this lines on .git/
 
 ###Sunrise v0.2 (in development)
 
-<img src="./doc/README/Sunrise02.png" width="200" align="center"><img src="./doc/README/Sunrise02real.JPG" height="285" align="center">
+<img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.JPG" height="285" align="center">
 
 ####Specs (may change during development):
 * Motor assisted projector axis for resolution adjustment.
@@ -73,6 +73,19 @@ To take advantage of git diff features on FCStd files, paste this lines on .git/
 * [Creation Workshop][CW] as slicer and projector control.
 * PDMS coated resin vat.
 
+##Credits
+To everyone with the courage to go open source and contribute to humankind's DLP 3D printing knowledge
+
+* To Clone Wars Barcelona for [ResinCAT3D][Resincat]
+* To the Eraikizpi team for [Eraikizpi][Erai]
+* To the PrintThatS**t team for [ResinCATPTS][PTS]
+* To [BuildYourOwnSLA][BYOSLA] forum
+* Michael Joyce from B9Creations for [B9Creator][b9c]
+* To EnvisionLabs, for [Creation Workshop][CW]
+
+Thank you 
+
+
 ##License
 
 
@@ -93,3 +106,8 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 [AU-link]: https://www.arduino.cc/en/Main/arduinoBoardUno
 [CNCS-link]: http://blog.protoneer.co.nz/arduino-cnc-shield/
 [Optoma-link]: http://www.optomausa.com/projectordetails.aspx?PTypeDB=Business&PC=ML750
+[BYOSLA]: http://www.buildyourownsla.com
+[Erai]: http://reprap.org/wiki/Eraikizpi
+[Resincat]: http://reprap.org/wiki/ResinCat_3D/es
+[PTS]: http://reprap.org/wiki/ResinCat_3D_PTS
+[b9c]: http://www.b9c.com/
