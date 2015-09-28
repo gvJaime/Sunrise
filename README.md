@@ -62,6 +62,8 @@ The length of the pieces of aluminium profiles and smooth rods can be seen in th
 
 You can contribute to this repo by forking it, and making pull requests to the Development branch. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
 
+Due to FCStd files being unmergeable, SunriseAssembly.FCStd is modified only on the Development branch. It may not be included in pull requests.
+
 In case of contributing using gitflow, and to take advantage of git diff features on FCStd files, and avoid big commit files, paste this lines on .git/config:
 ```
 [include]
@@ -137,6 +139,6 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 [PTS]: http://reprap.org/wiki/ResinCat_3D_PTS
 [b9c]: http://www.b9c.com/
 [plates]: ./stl/plates
-[Assembly]: ./src/SunriseAssembly.fcstd
+[Assembly]: ./src/SunriseAssembly.FCStd
 [stlfolder]: ./stl
 [issue]: https://github.com/bqlabs/Sunrise/issues/new
