@@ -14,6 +14,7 @@ If you print a Sunrise this way, you'll need:
 * 1 x [PlatformHold.stl][PlatHold]
 * 1 x [RVATbarHolder.stl][RVAT]
 * 1 x [LVATbarHolder.stl][LVAT]
+* 1 x [QuickFit.stl][Quick]
 
 [AnklesUProj]: ./AnklesAndUpperProj.stl
 [TipsBeam]: ./TipsAndMainBeam.stl
@@ -27,3 +28,4 @@ If you print a Sunrise this way, you'll need:
 [PlatHold]: ../../ZAxisModule/PlatformHold.stl
 [RVAT]: ../../ZAxisModule/RVATbarHolder.stl
 [LVAT]: ../../ZAxisModule/LVATbarHolder.stl
+[Quick]: ../../ZAxisModule/QuickFit.stl

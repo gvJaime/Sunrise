@@ -39,19 +39,44 @@ Folder content is descripted below
 * `doc`: useful files for documentation
 * `Software`: Provisional, holds useful software until it gets big enough for it to have its own repo.
 
-To take advantage of git diff features on FCStd files, paste this lines on .git/config:
+###Cloning this machine
+
+To build this machine, you need to print the 3D printable parts in [the stl folder][stlfolder]. You need to print each file once.
+You can also find plates for 20x20cm bases and Witbox bases in [this folder][plates], so you can clone the machine in less prints.
+
+You will also need:
+* 1958 mm of 20x20 aluminium extrusion profile
+* 1378 mm of 30x30 aluminium extrusion profile
+* Smooth rods, depending on desired Zaxis length
+* Hammerhead nuts (Around 196 for 20x20 profiles and 52 for 30x30)
+* DIN912 M4x8 bolts for 20x20 hammerhead nuts
+* DIN912 M6x10 bolts for 30x30 hammerhead nuts
+* 2 M3x10 Bolts
+* 1 M3x20 Bolt
+* 1 M3x30 Bolt
+* A hacked Optoma ML750 (Focus moved forward with a M2 nut)
+
+The length of the pieces of aluminium profiles and smooth rods can be seen in the [assembly file][Assembly]. Due to this being still in development there's not a lot of documentation. If you have any doubts feel free to ask.
+
+###Contributing to this repo
+
+You can contribute to this repo by forking it, and making pull requests to the Development branch. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
+
+In case of contributing using gitflow, and to take advantage of git diff features on FCStd files, and avoid big commit files, paste this lines on .git/config:
 ```
 [include]
     path = ../.gitconfig
 ```
+These will include the particular repo configuration, that tells git to unzip the files before diffing them.
+
 
 ##History
 
-###Sunrise v0.2 (in development)
+###Sunrise v0.2
 
 <img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.JPG" height="285" align="center">
 
-####Specs (may change during development):
+####Specs:
 * Motor assisted projector axis for resolution adjustment.
 * Aluminium extrusion profiles + printed parts based structure. Way more rigid than v0.1.
 * Hacked [Optoma ML750][Optoma-link] pico-projector.
@@ -111,3 +136,7 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 [Resincat]: http://reprap.org/wiki/ResinCat_3D/es
 [PTS]: http://reprap.org/wiki/ResinCat_3D_PTS
 [b9c]: http://www.b9c.com/
+[plates]: ./stl/plates
+[Assembly]: ./src/SunriseAssembly.fcstd
+[stlfolder]: ./stl
+[issue]: https://github.com/bqlabs/Sunrise/issues/new

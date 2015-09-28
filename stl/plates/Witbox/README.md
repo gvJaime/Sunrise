@@ -8,6 +8,7 @@ To clone a Sunrise this way, you need:
 * 1 x [plate4.stl][fourth]
 * 1 x [plate5.stl][fifth]
 * 1 x [Platform.stl][platform]
+* 1 x [QuickFit.stl][Quick]
 
 [first]: ./plate1.stl
 [second]: ./plate2.stl
@@ -15,3 +16,4 @@ To clone a Sunrise this way, you need:
 [fourth]: ./plate4.stl
 [fifth]: ./plate5.stl
 [platform]: ../../ZAxisModule/Platform.stl
+[Quick]: ../../ZAxisModule/QuickFit.stl
