@@ -76,7 +76,7 @@ These will include the particular repo configuration, that tells git to unzip th
 
 ###Sunrise v0.2
 
-<img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.JPG" height="285" align="center">
+<img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.jpg" height="285" align="center"><img src="./doc/README/Sun02Sappho.jpg" height="285" align="center">
 
 ####Specs:
 * Motor assisted projector axis for resolution adjustment.

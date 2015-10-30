@@ -9,7 +9,7 @@ If you print a Sunrise this way, you'll need:
 * 1 x [ZcarriageAndBarHolders.stl][Zcarriage]
 * 1 x [HacktomaAdaptor.stl][Hacktoma]
 * 1 x [FlexiVATTop.stl][FlexTop]
-* 1 x [FlexiVATBase.stl][FlexBase]
+* 1 x [FlexiVATBase.stl][FlexBase] (MAY NOT FIT)
 * 1 x [Platform.stl][Plat]
 * 1 x [PlatformHold.stl][PlatHold]
 * 1 x [RVATbarHolder.stl][RVAT]
