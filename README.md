@@ -74,6 +74,25 @@ These will include the particular repo configuration, that tells git to unzip th
 
 ##History
 
+<<<<<<< HEAD
+=======
+###Sunrise v0.3 (In development)
+
+####Target Specs
+
+#####Primary
+* Easier assembly and printing.
+* Use just one size of profiles.
+* Improve ZAxis performance by adding weight to the carriage.
+
+#####Secondary
+* Build environment enclosure.
+ * Must be compatible with fast vat swapping. (Vat may go out by pulling from it, rather than lifting it)
+ * Zcarriage will access the environment through a bellow
+ * Will have a door
+* Bellow for projector. UV light must not get out of the bellow.
+
+>>>>>>> 9d4575e... Rewrite v0.3 target specs
 ###Sunrise v0.2
 
 <img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.jpg" height="285" align="center"><img src="./doc/README/Sun02Sappho.jpg" height="285" align="center">
