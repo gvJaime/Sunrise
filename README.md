@@ -19,7 +19,7 @@ Repeating this process, curing one layer below the previous one, ends up craftin
 ##The machine
 
 
-<img src="./doc/README/Sunrise02.png" width="200" align="center">
+<img src="./doc/README/SunriseCurrent.png" width="200" align="center">
 
 
 This machine tries to stick to the RepRap philosophy, so structure and moving parts are 3D printed. Motion control is performed by an Arduino with a CNCShield, running a version of [GRBL][GRBL-link] that can be found [here][Sunrise-fw].
@@ -77,6 +77,8 @@ These will include the particular repo configuration, that tells git to unzip th
 
 ###Sunrise v0.3 (In development)
 
+<img src="./doc/README/SunriseDev.png" width="200" align="center">
+
 ####Target Specs
 
 #####Primary
@@ -87,6 +89,7 @@ These will include the particular repo configuration, that tells git to unzip th
  * Must be compatible with fast vat swapping. (Vat may go out by pulling from it, rather than lifting it)
  * Zcarriage will access the environment through a bellow
  * Will have a door
+ * Enclosure, VAT, and platform will come out as a whole, so uninstalling will be easier.
 * Bellow for projector. UV light must not get out of the bellow.
 
 
