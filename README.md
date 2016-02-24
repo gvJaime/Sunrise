@@ -104,7 +104,7 @@ These will include the particular repo configuration, that tells git to unzip th
 * QuickFit for easy replacement of the vat.
 
 
-###[Sunrise v0.1][Sunrise-v0.1]
+###[Sunrise v0.1 "Mendelian"][Sunrise-v0.1]
 
 <img src="./doc/README/Sunrise01.png" width="200" align="center"><img src="./doc/README/Sunrise01real.JPG" height="273" align="center"><img src="./doc/README/Sun01Sappho.JPG" height="273" align="center">
 
