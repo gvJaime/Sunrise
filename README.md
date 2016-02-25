@@ -1,4 +1,7 @@
 #Sunrise Project
+
+<img src="./doc/README/SunriseCurrent.png" height="458" align="center"><img src="./doc/README/SunriseCurrentReal.png" height="458" align="center">
+
 ##Introduction
 
 The Sunrise Project is a research project, that aims to design an Open Source  hackable DLP based 3D printing system.
@@ -17,9 +20,6 @@ Repeating this process, curing one layer below the previous one, ends up craftin
 <img src="./doc/2015-04-13-Prototipo-1-diagrama-bloques/Diagrama-bloques.png" width="300" align="center">
 
 ##The machine
-
-
-<img src="./doc/README/SunriseCurrent.png" width="200" align="center">
 
 
 This machine tries to stick to the RepRap philosophy, so structure and moving parts are 3D printed. Motion control is performed by an Arduino with a CNCShield, running a version of [GRBL][GRBL-link] that can be found [here][Sunrise-fw].
@@ -42,7 +42,6 @@ Folder content is descripted below
 ###Cloning this machine
 
 To build this machine, you need to print the 3D printable parts in [the stl folder][stlfolder]. You need to print each file once.
-You can also find plates for 20x20cm bases and Witbox bases in [this folder][plates], so you can clone the machine in less prints.
 
 You will also need:
 * 1958 mm of 20x20 aluminium extrusion profile
@@ -56,11 +55,13 @@ You will also need:
 * 1 M3x30 Bolt
 * A hacked Optoma ML750 (Focus moved forward with a M2 nut)
 
-The length of the pieces of aluminium profiles and smooth rods can be seen in the [assembly file][Assembly]. Due to this being still in development there's not a lot of documentation. If you have any doubts feel free to ask.
+The length of the pieces of aluminium profiles and smooth rods can be seen in the [assembly file][Assembly]. Due to this being still in development there's not a lot of documentation. If you have any doubts [feel free to ask][issue].
+
+**Please note:** From v0.2.5 this repo uses [Assembly 2 FreeCAD workbench][Assembly2] for the assembly. You may want to install it before opening the assembly file.
 
 ###Contributing to this repo
 
-You can contribute to this repo by forking it, and making pull requests to the Development branch. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
+You can contribute to this repo by forking it, and making pull requests to the [Development branch][Develop]. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
 
 Due to FCStd files being unmergeable, SunriseAssembly.FCStd is modified only on the Development branch. It may not be included in pull requests.
 
@@ -81,19 +82,27 @@ These will include the particular repo configuration, that tells git to unzip th
 
 ####Target Specs
 
-#####Primary
 * Easier assembly and printing.
-
-#####Secondary
 * Build environment enclosure.
  * Must be compatible with fast vat swapping. (Vat may go out by pulling from it, rather than lifting it)
  * Zcarriage will access the environment through a bellow
- * Will have a door
  * Enclosure, VAT, and platform will come out as a whole, so uninstalling will be easier.
 * Bellow for projector. UV light must not get out of the bellow.
+* Proyector is placed sideways so the machine can be narrower
+* Ball joint based autoleveling platform
 
 
-###Sunrise v0.2
+###Sunrise v0.2.5
+
+<img src="./doc/README/Sunrise025.png" height="285" align="center"><img src="./doc/README/Sunrise025real.png" height="285" align="center"><img src="./doc/README/Sun025Sappho.jpg" height="285" align="center">
+
+####Changes
+* Lower part of the frame redesigned
+	* Easier assembly
+	* Less bolt usage
+	* Filaflex pads on legs
+
+###[Sunrise v0.2 "Aluminium"][Sunrise-v0.2]
 
 <img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.jpg" height="285" align="center"><img src="./doc/README/Sun02Sappho.jpg" height="285" align="center">
 
@@ -143,8 +152,9 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 
 
 [GRBL-link]: https://github.com/grbl/grbl
-[Sunrise-fw]: https://github.com/bq/Sunrise-fw
-[Sunrise-v0.1]: https://github.com/bq/Sunrise/releases/tag/0.1
+[Sunrise-fw]: https://github.com/bqlabs/Sunrise-fw
+[Sunrise-v0.1]: https://github.com/bqlabs/Sunrise/releases/tag/0.1
+[Sunrise-v0.2]: https://github.com/bqlabs/Sunrise/releases/tag/0.2
 [CW]: http://www.envisionlabs.net/
 [Marlink]: http://reprap.org/wiki/Marlin
 [RAMPS-link]: http://reprap.org/wiki/RAMPS_1.4
@@ -158,6 +168,8 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 [PTS]: http://reprap.org/wiki/ResinCat_3D_PTS
 [b9c]: http://www.b9c.com/
 [plates]: ./stl/plates
-[Assembly]: ./src/SunriseAssembly.FCStd
+[Assembly]: ./DynamicAssembly.FCStd
 [stlfolder]: ./stl
 [issue]: https://github.com/bqlabs/Sunrise/issues/new
+[Develop]: https://github.com/bqlabs/Sunrise/tree/Development
+[Assembly2]: https://github.com/hamish2014/FreeCAD_assembly2
