@@ -55,7 +55,7 @@ You will also need:
 * 1 M3x30 Bolt
 * A hacked Optoma ML750 (Focus moved forward with a M2 nut)
 
-The length of the pieces of aluminium profiles and smooth rods can be seen in the [assembly file][Assembly]. Due to this being still in development there's not a lot of documentation. If you have any doubts [feel free to ask][issue].
+The length of the pieces of aluminium profiles and smooth rods can be seen in the [assembly file][Assembly]. Due to this being still in development there's not a lot of documentation. If you have any doubts [feel free to ask in the "issues" section][issue].
 
 **Please note:** From v0.2.5 this repo uses [Assembly 2 FreeCAD workbench][Assembly2] for the assembly. You may want to install it before opening the assembly file.
 
@@ -63,9 +63,9 @@ The length of the pieces of aluminium profiles and smooth rods can be seen in th
 
 You can contribute to this repo by forking it, and making pull requests to the [Development branch][Develop]. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
 
-Due to FCStd files being unmergeable, SunriseAssembly.FCStd is modified only on the Development branch. It may not be included in pull requests.
+Due to FCStd files being unmergeable, Assembly.FCStd is modified only on the Development branch. It may not be included in pull requests. Remember that you need [Assembly 2 FreeCAD workbench][Assembly2] to open it.
 
-In case of contributing using gitflow, and to take advantage of git diff features on FCStd files, and avoid big commit files, paste this lines on .git/config:
+In case of contributing using gitflow, take advantage of git diff features on FCStd files, and avoid big commit files, paste this lines on your ~/.git/config:
 ```
 [include]
     path = ../.gitconfig
