@@ -32,12 +32,9 @@ PDMS based vat and flexible bottom vat system are being considered.
 This repo contains the mechanical structure source. The tool of use is FreeCAD.
 Folder content is descripted below
 * `src`: Source files and assembly.
-* `Step`: Step files for CAD import.
-* `stl`: stl files for 3D printing.
+* `Step`: Step files for CAD import
 * `FEM`: Part file duplicates for possible FEM analysis.
-* `Fonts`: Fonts used in the design of the parts.
-* `doc`: useful files for documentation
-* `Software`: Provisional, holds useful software until it gets big enough for it to have its own repo.
+* `doc`: useful files for documentation.
 
 ###Cloning this machine
 
