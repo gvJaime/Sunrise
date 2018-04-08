@@ -1,15 +1,15 @@
-#Sunrise Project
+# Sunrise Project
 
 <img src="./doc/README/SunriseCurrent.png" height="458" align="center"><img src="./doc/README/SunriseCurrentReal.png" height="458" align="center">
 
-##Introduction
+## Introduction
 
 The Sunrise Project is a research project, that aims to design an Open Source  hackable DLP based 3D printing system.
 
-##Approach
+## Approach
 The intention is to make the machine accesible to the general public. It must be sourceable, craftable, and modifiable by everyone. It aspires to be a platform for the community to explore this technology. Mechanics are scalable, source is available and modifiable, tools are open and obtainable.
 
-##The technology
+## The technology
 
 DLP 3D Printing uses photopolymierizing resin to craft the parts. Parts generate layer by layer as they are cured by a projector that outputs the cross-sections of the part, into the resin. There are various mechanical structures that can be used to achieve this.
 
@@ -19,7 +19,7 @@ Repeating this process, curing one layer below the previous one, ends up craftin
 
 <img src="./doc/2015-04-13-Prototipo-1-diagrama-bloques/Diagrama-bloques.png" width="300" align="center">
 
-##The machine
+## The machine
 
 
 This machine tries to stick to the RepRap philosophy, so structure and moving parts are 3D printed. Motion control is performed by an Arduino with a CNCShield, running a version of [GRBL][GRBL-link] that can be found [here][Sunrise-fw].
@@ -27,7 +27,7 @@ The projector is an [Optoma ML750][Optoma-link], with hacked optics for nearer f
 PDMS based vat and flexible bottom vat system are being considered.
 
 
-##About this repo
+## About this repo
 
 This repo contains the mechanical structure source. The tool of use is FreeCAD.
 Folder content is descripted below
@@ -39,7 +39,7 @@ Folder content is descripted below
 * `doc`: useful files for documentation
 * `Software`: Provisional, holds useful software until it gets big enough for it to have its own repo.
 
-###Cloning this machine
+### Cloning this machine
 
 To build this machine, you need to print the 3D printable parts in [the stl folder][stlfolder]. You need to print each file once.
 
@@ -59,7 +59,7 @@ The length of the pieces of aluminium profiles and smooth rods can be seen in th
 
 **Please note:** From v0.2.5 this repo uses [Assembly 2 FreeCAD workbench][Assembly2] for the assembly. You may want to install it before opening the assembly file.
 
-###Contributing to this repo
+### Contributing to this repo
 
 You can contribute to this repo by forking it, and making pull requests to the [Development branch][Develop]. If you find problems to make the contribution this way, [place an issue][issue] and we'll work it out.
 
@@ -73,14 +73,14 @@ In case of contributing using gitflow, take advantage of git diff features on FC
 These will include the particular repo configuration, that tells git to unzip the files before diffing them.
 
 
-##History
+## History
 
 
-###Sunrise v0.3 (In development)
+### Sunrise v0.3 (In development)
 
 <img src="./doc/README/SunriseDev.png" width="200" align="center">
 
-####Target Specs
+#### Target Specs
 
 * Easier assembly and printing.
 * Build environment enclosure.
@@ -92,7 +92,7 @@ These will include the particular repo configuration, that tells git to unzip th
 * Ball joint based autoleveling platform
 
 
-###Sunrise v0.2.5
+### Sunrise v0.2.5
 
 <img src="./doc/README/Sunrise025.png" height="285" align="center"><img src="./doc/README/Sunrise025real.png" height="285" align="center"><img src="./doc/README/Sun025Sappho.jpg" height="285" align="center">
 
@@ -102,11 +102,11 @@ These will include the particular repo configuration, that tells git to unzip th
 	* Less bolt usage
 	* Filaflex pads on legs
 
-###[Sunrise v0.2 "Aluminium"][Sunrise-v0.2]
+### [Sunrise v0.2 "Aluminium"][Sunrise-v0.2]
 
 <img src="./doc/README/Sunrise02.png" height="285" align="center"><img src="./doc/README/Sunrise02real.jpg" height="285" align="center"><img src="./doc/README/Sun02Sappho.jpg" height="285" align="center">
 
-####Specs:
+#### Specs:
 * Motor assisted projector axis for resolution adjustment.
 * Aluminium extrusion profiles + printed parts based structure. Way more rigid than v0.1.
 * Hacked [Optoma ML750][Optoma-link] pico-projector.
@@ -116,11 +116,11 @@ These will include the particular repo configuration, that tells git to unzip th
 * QuickFit for easy replacement of the vat.
 
 
-###[Sunrise v0.1 "Mendelian"][Sunrise-v0.1]
+### [Sunrise v0.1 "Mendelian"][Sunrise-v0.1]
 
 <img src="./doc/README/Sunrise01.png" width="200" align="center"><img src="./doc/README/Sunrise01real.JPG" height="273" align="center"><img src="./doc/README/Sun01Sappho.JPG" height="273" align="center">
 
-####Specs:
+#### Specs:
 * Threaded rod + printed parts based structure.
 * Hacked [Optoma ML750][Optoma-link] pico-projector used to save space.
 * Modular setting for easy technique testing.
@@ -128,20 +128,21 @@ These will include the particular repo configuration, that tells git to unzip th
 * [Creation Workshop][CW] as slicer and projector control.
 * PDMS coated resin vat.
 
-##Credits
+## Credits
 To everyone with the courage to go open source and contribute to humankind's DLP 3D printing knowledge
 
 * To Clone Wars Barcelona for [ResinCAT3D][Resincat]
 * To the Eraikizpi team for [Eraikizpi][Erai]
-* To the PrintThatS**t team for [ResinCATPTS][PTS]
 * To [BuildYourOwnSLA][BYOSLA] forum
 * Michael Joyce from B9Creations for [B9Creator][b9c]
 * To EnvisionLabs, for [Creation Workshop][CW]
+* To [Alessandro Ranelucci][alranel], for creating [Slic3r][slicer]
+* To [Mundo Reader S.L.][bq], for sponsoring and financing this project from September 2014 to April 2016
 
-Thank you 
+Thank you
 
 
-##License
+## License
 
 
 <img src="./doc/LICENSE/by-sa.png" width="200" align = "center">
@@ -155,6 +156,9 @@ Esta maquina tiene una licencia [Creative Commons Attribution-ShareAlike 4.0 Int
 [Sunrise-fw]: https://github.com/bqlabs/Sunrise-fw
 [Sunrise-v0.1]: https://github.com/bqlabs/Sunrise/releases/tag/0.1
 [Sunrise-v0.2]: https://github.com/bqlabs/Sunrise/releases/tag/0.2
+[slicer]: http://slic3r.org/
+[bq]: https://bq.com
+[alranel]: https://twitter.com/alranel
 [CW]: http://www.envisionlabs.net/
 [Marlink]: http://reprap.org/wiki/Marlin
 [RAMPS-link]: http://reprap.org/wiki/RAMPS_1.4
