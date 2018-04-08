@@ -1,2 +1,2 @@
-*.FCStd diff=zip
-*.fcstd diff=zip
+*.FCStd filter=lfs diff=lfs merge=lfs -text
+*.fcstd filter=lfs diff=lfs merge=lfs -text
